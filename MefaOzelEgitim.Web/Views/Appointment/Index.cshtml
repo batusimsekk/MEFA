@@ -1,0 +1,217 @@
+@model MefaOzelEgitim.Web.Models.AppointmentCreateViewModel
+
+@{
+    ViewData["Title"] = "Online Randevu Oluştur";
+}
+
+<!-- Üst Banner Alanı -->
+<header class="py-5 position-relative overflow-hidden bg-light" style="border-bottom: 1px solid var(--border-color);">
+    <div class="container text-center py-4 position-relative z-1" data-aos="fade-down">
+        <span class="badge px-3 py-2 rounded-pill fw-semibold mb-3 shadow-sm" style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue); border: 1px solid var(--border-color);">
+            <i class="fa-solid fa-calendar-star me-1"></i> Kolay ve Hızlı Planlama
+        </span>
+        <h1 class="fw-bold display-5 mb-2 text-dark">Uzmanlarımızla Görüşün</h1>
+        <p class="lead text-muted mb-0">Çocuğunuzun gelişimi için ilk adımı atın, size en uygun zamanda dönüş yapalım.</p>
+    </div>
+</header>
+
+<!-- Randevu Form Section -->
+<section class="py-5 bg-white">
+    <div class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-xl-8">
+
+                <!-- Başarı / Hata Mesajları -->
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show rounded-4 shadow-sm border-0 mb-4 p-4"
+                         role="alert" style="background-color: rgba(16, 185, 129, 0.1); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3) !important;">
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-circle-check fs-3 me-3 text-success"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-dark">Tebrikler!</h5>
+                                <p class="mb-0 text-muted">@TempData["SuccessMessage"]</p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show rounded-4 shadow-sm border-0 mb-4 p-4"
+                         role="alert" style="background-color: rgba(239, 68, 68, 0.1); color: #DC2626; border: 1px solid rgba(239, 68, 68, 0.3) !important;">
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-circle-exclamation fs-3 me-3 text-danger"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-dark">Hata!</h5>
+                                <p class="mb-0 text-muted">@TempData["ErrorMessage"]</p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <!-- Ana Form Kartı -->
+                <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white" data-aos="fade-up" style="border: 1px solid var(--border-color) !important;">
+                    <div class="mb-4 pb-3 border-bottom border-secondary-subtle">
+                        <h3 class="fw-bold text-dark mb-1">Randevu Talep Formu</h3>
+                        <p class="text-muted small mb-0">Lütfen aşağıdaki formu eksiksiz doldurun. Eğitim danışmanlarımız randevunuzu onaylamak için sizi arayacaktır.</p>
+                    </div>
+
+                    <form asp-action="Create" asp-controller="Appointment" method="post">
+                        <div class="row g-4">
+                        
+                            <!-- Ad Soyad -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-dark">Veli / Ad Soyad *</label>
+                                <div class="input-group shadow-sm rounded-3 overflow-hidden" style="border: 1px solid var(--border-color);">
+                                    <span class="input-group-text border-0 text-primary bg-light"><i class="fa-solid fa-user"></i></span>
+                                    <input type="text" asp-for="FullName"
+                                           class="form-control form-control-lg border-0 fs-6 bg-white text-dark shadow-none"
+                                           placeholder="Örn: Ahmet Yılmaz" required>
+                                </div>
+                                <span asp-validation-for="FullName" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Telefon -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-dark">Telefon Numarası *</label>
+                                <div class="input-group shadow-sm rounded-3 overflow-hidden" style="border: 1px solid var(--border-color);">
+                                    <span class="input-group-text border-0 text-primary bg-light"><i class="fa-solid fa-phone"></i></span>
+                                    <input type="tel" asp-for="Phone"
+                                           class="form-control form-control-lg border-0 fs-6 bg-white text-dark shadow-none"
+                                           placeholder="05XX XXX XX XX" required>
+                                </div>
+                                <span asp-validation-for="Phone" class="text-danger small"></span>
+                            </div>
+
+                            <!-- E-posta -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-dark">E-posta Adresi (Opsiyonel)</label>
+                                <div class="input-group shadow-sm rounded-3 overflow-hidden" style="border: 1px solid var(--border-color);">
+                                    <span class="input-group-text border-0 text-primary bg-light"><i class="fa-solid fa-envelope"></i></span>
+                                    <input type="email" asp-for="Email"
+                                           class="form-control form-control-lg border-0 fs-6 bg-white text-dark shadow-none"
+                                           placeholder="ornek@mail.com">
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Terapi / Eğitim Türü Seçimi (Dinamik) -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-dark">İlgilendiğiniz Terapi / Eğitim Türü *</label>
+                                <div class="input-group shadow-sm rounded-3 overflow-hidden" style="border: 1px solid var(--border-color);">
+                                    <span class="input-group-text border-0 text-primary bg-light"><i class="fa-solid fa-graduation-cap"></i></span>
+                                    <select asp-for="ServiceType" asp-items="ViewBag.ServiceList"
+                                            class="form-select form-control-lg border-0 fs-6 bg-white text-dark shadow-none" required>
+                                        <option value="" selected disabled>Terapi Türü Seçiniz</option>
+                                    </select>
+                                </div>
+                                <span asp-validation-for="ServiceType" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Yaş Aralığı Seçimi -->
+                            <div class="col-12">
+                                <label class="form-label fw-semibold small text-dark d-block mb-2">Öğrenci / Danışan Yaş Aralığı *</label>
+                                <div class="row g-2">
+                                    <div class="col-6 col-md-3">
+                                        <input type="radio" class="btn-check" name="AgeRange" id="age1" value="3 - 6 Yaş" required>
+                                        <label class="btn btn-outline-light w-100 py-3 rounded-3 fw-semibold shadow-sm text-center bg-light text-dark"
+                                               for="age1" style="border-color: var(--border-color);">
+                                            <span class="d-block small fw-bold" style="color: var(--sunset-orange);">Çocuk</span>
+                                            <span class="fs-6 text-muted">3 - 6 Yaş</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <input type="radio" class="btn-check" name="AgeRange" id="age2" value="7 - 11 Yaş">
+                                        <label class="btn btn-outline-light w-100 py-3 rounded-3 fw-semibold shadow-sm text-center bg-light text-dark"
+                                               for="age2" style="border-color: var(--border-color);">
+                                            <span class="d-block small fw-bold" style="color: var(--sunset-orange);">İlkokul</span>
+                                            <span class="fs-6 text-muted">7 - 11 Yaş</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <input type="radio" class="btn-check" name="AgeRange" id="age3" value="12 - 16 Yaş">
+                                        <label class="btn btn-outline-light w-100 py-3 rounded-3 fw-semibold shadow-sm text-center bg-light text-dark"
+                                               for="age3" style="border-color: var(--border-color);">
+                                            <span class="d-block small fw-bold" style="color: var(--sunset-orange);">Ortaokul / Lise</span>
+                                            <span class="fs-6 text-muted">12 - 16 Yaş</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <input type="radio" class="btn-check" name="AgeRange" id="age4" value="17+ Yaş / Yetişkin">
+                                        <label class="btn btn-outline-light w-100 py-3 rounded-3 fw-semibold shadow-sm text-center bg-light text-dark"
+                                               for="age4" style="border-color: var(--border-color);">
+                                            <span class="d-block small fw-bold" style="color: var(--sunset-orange);">Yetişkin</span>
+                                            <span class="fs-6 text-muted">17+ Yaş</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="AgeRange" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Randevu Tarihi ve Saati -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-dark">Tercih Edilen Tarih *</label>
+                                <input type="date" asp-for="AppointmentDate"
+                                       class="form-control form-control-lg border-0 fs-6 rounded-3 bg-light text-dark shadow-sm"
+                                       style="border: 1px solid var(--border-color) !important;" required>
+                                <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-dark">Tercih Edilen Saat Dilimi *</label>
+                                <select asp-for="AppointmentTime"
+                                        class="form-select form-control-lg border-0 fs-6 rounded-3 bg-light text-dark shadow-sm"
+                                        style="border: 1px solid var(--border-color) !important;" required>
+                                    <option value="" selected disabled>Saat Seçiniz</option>
+                                    <option value="09:00 - 10:00">09:00 - 10:00</option>
+                                    <option value="10:00 - 11:00">10:00 - 11:00</option>
+                                    <option value="11:00 - 12:00">11:00 - 12:00</option>
+                                    <option value="13:00 - 14:00">13:00 - 14:00</option>
+                                    <option value="14:00 - 15:00">14:00 - 15:00</option>
+                                    <option value="15:00 - 16:00">15:00 - 16:00</option>
+                                    <option value="16:00 - 17:00">16:00 - 17:00</option>
+                                </select>
+                                <span asp-validation-for="AppointmentTime" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Mesaj / Not -->
+                            <div class="col-12">
+                                <label class="form-label fw-semibold small text-dark">Özel Notunuz veya Belirtmek İstedikleriniz (Opsiyonel)</label>
+                                <textarea asp-for="Message" rows="4"
+                                          class="form-control border-0 fs-6 rounded-3 bg-light text-dark shadow-sm"
+                                          style="border: 1px solid var(--border-color) !important;"
+                                          placeholder="Varsa öğrencinin özel durumu veya merak ettikleriniz..."></textarea>
+                                <span asp-validation-for="Message" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Gönder Butonu -->
+                            <div class="col-12 mt-4">
+                                <button type="submit"
+                                        class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm fs-5 text-white"
+                                        style="background-color: var(--sunset-orange) !important; border-color: var(--sunset-orange) !important; transition: all 0.25s ease;">
+                                    <i class="fa-solid fa-paper-plane me-2"></i> Randevu Talebini Gönder
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .btn-check:checked + .btn-outline-light {
+        background-color: var(--sunset-orange) !important;
+        color: white !important;
+        border-color: var(--sunset-orange) !important;
+    }
+
+    .btn-check:checked + .btn-outline-light span {
+        color: white !important;
+    }
+</style>

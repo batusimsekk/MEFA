@@ -1,0 +1,88 @@
+@model MefaOzelEgitim.Web.Areas.Admin.Models.AnnouncementEditViewModel
+
+@{
+    ViewData["Title"] = "Duyuru Düzenle";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">Duyuru Düzenle</h2>
+            <p class="text-muted small mb-0">Mevcut duyuru bilgilerini güncelleyin.</p>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-secondary rounded-3 px-3 fw-semibold">
+            <i class="fa-solid fa-arrow-left me-2"></i> Duyurulara Dön
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card border-0 shadow-sm rounded-4 bg-white p-4 p-md-5">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="ExistingImageUrl" />
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-8">
+                            <label asp-for="Title" class="form-label fw-semibold text-secondary small">Duyuru Başlığı
+                                *</label>
+                                <input asp-for="Title" class="form-control rounded-3 py-2" required />
+                                <span asp-validation-for="Title" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="PublishDate" class="form-label fw-semibold text-secondary small">Yayın
+                                    Tarihi *</label>
+                                    <input asp-for="PublishDate" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local"
+                                           class="form-control rounded-3 py-2" required />
+                                    <span asp-validation-for="PublishDate" class="text-danger small"></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Summary" class="form-label fw-semibold text-secondary small">Duyuru Özeti
+                                    *</label>
+                                    <textarea asp-for="Summary" rows="2" class="form-control rounded-3" required></textarea>
+                                    <span asp-validation-for="Summary" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Mevcut Görsel Önizleme ve Yeni Görsel Yükleme -->
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold text-secondary small">Mevcut Görsel</label>
+                                    @if (!string.IsNullOrEmpty(Model.ExistingImageUrl))
+                                    {
+                                        <div class="mb-2">
+                                            <img src="@Model.ExistingImageUrl" alt="Duyuru Görseli" class="rounded-3 shadow-sm"
+                                                 style="max-height: 120px; object-fit: cover;" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-muted small fst-italic">Bu duyuruya ait görsel bulunmuyor.</p>
+                                    }
+
+                                    <label asp-for="NewImage" class="form-label fw-semibold text-secondary small mt-2">Yeni Görsel
+                                        Yükle (Değiştirmek istemiyorsanız boş bırakın)</label>
+                                        <input asp-for="NewImage" type="file" class="form-control rounded-3 py-2" accept="image/*" />
+                                        <span asp-validation-for="NewImage" class="text-danger small"></span>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label asp-for="Content" class="form-label fw-semibold text-secondary small">Duyuru Detaylı
+                                            İçeriği *</label>
+                                            <textarea asp-for="Content" rows="6" class="form-control rounded-3" required></textarea>
+                                            <span asp-validation-for="Content" class="text-danger small"></span>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end gap-2">
+                                            <a asp-action="Index"
+                                               class="btn btn-light px-4 py-2 rounded-3 fw-semibold text-secondary">İptal</a>
+                                            <button type="submit" class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm">
+                                                <i class="fa-solid fa-floppy-disk me-2"></i> Güncellemeleri Kaydet
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

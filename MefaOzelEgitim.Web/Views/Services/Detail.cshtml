@@ -1,0 +1,48 @@
+@model MefaOzelEgitim.Domain.Entities.Service
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container py-5">
+    <!-- Geri Dön Butonu -->
+    <div class="mb-4">
+        <a href="javascript:history.back()" class="text-decoration-none text-muted fw-semibold">
+            <i class="fa-solid fa-arrow-left me-2"></i> Geri Dön
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm rounded-4 bg-white p-4 p-md-5">
+                <!-- Başlık ve İkon Alanı -->
+                <div class="d-flex align-items-center mb-4 pb-3 border-bottom">
+                    <div class="bg-primary-subtle text-primary rounded-4 d-flex align-items-center justify-content-center me-3 shadow-sm" style="width: 65px; height: 65px; min-width: 65px;">
+                        <i class="fa-solid fa-graduation-cap fs-3"></i>
+                    </div>
+                    <div>
+                        <h1 class="fw-bold text-dark fs-2 mb-1">@Model.Title</h1>
+                        <p class="text-muted small mb-0">MEFA Özel Eğitim Merkezi - Program Detayı</p>
+                    </div>
+                </div>
+
+                <!-- Açıklama / İçerik Alanı -->
+                <div class="mb-5 text-secondary lh-lg">
+                    <p class="fs-5">@Model.ShortDescription</p>
+                </div>
+
+                <!-- Alt Kısım: Randevu / Başvuru CTA (Call to Action) Kutusu -->
+                <div class="bg-light rounded-4 p-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                    <div>
+                        <h5 class="fw-bold text-dark mb-1">Bu Eğitim İçin Değerlendirme Randevusu Alın</h5>
+                        <p class="text-muted small mb-0">Uzmanlarımızla görüşmek ve çocuğunuz için randevu oluşturmak için tıklayın.</p>
+                    </div>
+                    <a asp-controller="Appointment" asp-action="Index" asp-route-serviceId="@Model.Id" 
+                       class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm text-nowrap">
+                        <i class="fa-solid fa-calendar-check me-2"></i> Randevu Al / Başvur
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

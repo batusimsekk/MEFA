@@ -1,0 +1,643 @@
+﻿@model MefaOzelEgitim.Web.Models.HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<!-- 1. HERO (GİRİŞ) BÖLÜMÜ -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7" data-aos="fade-right">
+                <span class="badge px-3 py-2 rounded-pill fw-semibold mb-3 shadow-sm"
+                      style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue); border: 1px solid var(--border-color);">
+                    <i class="fa-solid fa-star me-1 text-warning"></i> Geleceğe Güvenle Dokunuyoruz
+                </span>
+                <h1 class="display-4 fw-bold mb-3 lh-sm text-dark">
+                    Her Çocuk Özeldir,<br />
+                    <span class="hero-gradient-text">Her Adım Yeni Bir Umut.</span>
+                </h1>
+                <p class="lead mb-4 text-muted">MEFA Özel Eğitim Merkezi olarak, bireysel ihtiyaçlara uygun modern
+                    yöntemler ve uzman kadromuzla çocuklarımızın gelişim yolculuğuna rehberlik ediyoruz.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a asp-controller="Appointment" asp-action="Index"
+                           class="btn btn-primary btn-lg px-4 py-3 rounded-pill fw-bold shadow">
+                            <i class="fa-regular fa-calendar-check me-2"></i>Randevu Oluştur
+                        </a>
+                        <a href="#services" class="btn btn-outline-dark btn-lg px-4 py-3 rounded-pill fw-semibold">
+                            Programlarımızı İncele
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block text-center position-relative" data-aos="fade-left">
+                    <div class="p-4 rounded-4 shadow-sm bg-white" style="border: 1px solid var(--border-color) !important;">
+                        <i class="fa-solid fa-hands-holding-child display-1 mb-3" style="color: var(--primary-blue);"></i>
+                        <h3 class="h4 fw-bold text-dark">Profesyonel Yaklaşım</h3>
+                        <p class="small mb-0 text-muted">Çocuğunuzun potansiyelini birlikte keşfediyor, en doğru
+                            yönlendirmeleri yapıyoruz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- İSTATİSTİK SAYACI BANDI -->
+        <section class="py-4 shadow-sm bg-white"
+                 style="border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+            <div class="container">
+                <div class="row text-center g-4">
+                    <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                        <h2 class="fw-bold display-5 mb-0 text-dark">15+</h2>
+                        <p class="small mb-0 text-muted">Uzman Eğitmen</p>
+                    </div>
+                    <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                        <h2 class="fw-bold display-5 mb-0 text-dark">500+</h2>
+                        <p class="small mb-0 text-muted">Mutlu Öğrenci & Aile</p>
+                    </div>
+                    <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                        <h2 class="fw-bold display-5 mb-0 text-dark">10+</h2>
+                        <p class="small mb-0 text-muted">Yıllık Deneyim</p>
+                    </div>
+                    <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+                        <h2 class="fw-bold display-5 mb-0 text-dark">%98</h2>
+                        <p class="small mb-0 text-muted">Veli Memnuniyeti</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. KURUMSAL ÖZELLİKLER (NEDEN BİZ?) -->
+        <section class="py-5 bg-light">
+            <div class="container py-4">
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card hover-card border-0 shadow-sm p-4 text-center h-100 rounded-4 bg-white"
+                             style="border: 1px solid var(--border-color) !important;">
+                            <div class="icon-box mb-3 mx-auto"
+                                 style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue); width: 65px; height: 65px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <h4 class="h5 fw-bold mb-2 text-dark">Uzman & Deneyimli Kadro</h4>
+                            <p class="text-muted small mb-0">Alanında uzman psikologlar, özel eğitim öğretmenleri ve terapistler
+                                ile birebir gelişim takibi.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card hover-card border-0 shadow-sm p-4 text-center h-100 rounded-4 bg-white"
+                                 style="border: 1px solid var(--border-color) !important;">
+                                <div class="icon-box mb-3 mx-auto"
+                                     style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue); width: 65px; height: 65px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                    <i class="fa-solid fa-puzzle-piece"></i>
+                                </div>
+                                <h4 class="h5 fw-bold mb-2 text-dark">Bireyselleştirilmiş Plan</h4>
+                                <p class="text-muted small mb-0">Her öğrencimizin ilgi, yetenek ve öğrenme hızına özel olarak
+                                    hazırlanan eğitim müfredatı.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="card hover-card border-0 shadow-sm p-4 text-center h-100 rounded-4 bg-white"
+                                     style="border: 1px solid var(--border-color) !important;">
+                                    <div class="icon-box mb-3 mx-auto"
+                                         style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue); width: 65px; height: 65px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                        <i class="fa-solid fa-people-roof"></i>
+                                    </div>
+                                    <h4 class="h5 fw-bold mb-2 text-dark">Aile Destek & Danışmanlık</h4>
+                                    <p class="text-muted small mb-0">Eğitim sürecine aileleri aktif dahil eden şeffaf, sürdürülebilir
+                                        rehberlik mekanizması.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 3. EĞİTİM PROGRAMLARIMIZ (Filtre hapları kaldırıldı, aynı anda 4 kart gösterilecek şekilde ayarlandı) -->
+                    <section id="services" class="py-5 position-relative bg-white">
+                        <div class="container py-3">
+                            <div class="text-center mb-5" data-aos="fade-up">
+                                <h6 class="fw-bold text-uppercase" style="color: var(--sunset-orange);">Bilimsel & Bireyselleştirilmiş
+                                    Eğitimler</h6>
+                                    <h2 class="fw-bold text-dark">Özel Eğitim Programlarımız</h2>
+                                    <p class="text-muted">Her gelişim basamağı için dünya standartlarında kanıta dayalı terapötik yöntemler
+                                        sunuyoruz.</p>
+                                    </div>
+
+                                    <!-- Eğitim Kartları Grid / Swiper Alanı (Aynı anda 4 kart gösterimi) -->
+                                    <div class="position-relative px-lg-5" data-aos="fade-up">
+                                        <div class="swiper servicesSwiper px-2">
+                                            <div class="swiper-wrapper pb-5">
+                                                @if (Model.ServiceList != null && Model.ServiceList.Any())
+                                                {
+                                                    @foreach (var service in Model.ServiceList)
+                                                    {
+                                                        <div class="swiper-slide h-auto">
+                                                            <div class="card education-card border-0 shadow-sm h-100 p-4 d-flex flex-column justify-content-between rounded-4 bg-white"
+                                                                 style="border: 1px solid var(--border-color) !important;">
+                                                                <div>
+                                                                    <!-- Üst Küçük Kategori Rozeti ve İkonu -->
+                                                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                                                        <div class="rounded-circle d-flex align-items-center justify-content-center"
+                                                                             style="width: 36px; height: 36px; background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                                                                            <i
+                                                                            class="@(string.IsNullOrEmpty(service.IconClass) ? "fa-solid fa-graduation-cap" : service.IconClass) fs-6"></i>
+                                                                        </div>
+                                                                        <span class="badge rounded-pill px-3 py-1 fw-semibold"
+                                                                              style="background-color: rgba(2, 132, 199, 0.08); color: var(--primary-blue); font-size: 0.7rem;">
+                                                                            ÖZEL EĞİTİM DESTEĞİ
+                                                                        </span>
+                                                                    </div>
+
+                                                                    <h4 class="h5 fw-bold mb-3 text-dark">@service.Title</h4>
+                                                                    <p class="text-muted small lh-lg mb-4">@service.ShortDescription</p>
+                            
+                                                                    <!-- Alt Madde Özellikleri -->
+                                                                    <ul class="list-unstyled small text-muted mb-4 border-top pt-3 border-secondary-subtle">
+                                                                        <li class="mb-2 d-flex align-items-center gap-2">
+                                                                            <i class="fa-solid fa-check text-success"></i> Bireysel Gelişim Odaklı Seanslar
+                                                                        </li>
+                                                                        <li class="mb-2 d-flex align-items-center gap-2">
+                                                                            <i class="fa-solid fa-check text-success"></i> Uzman Eğitmen Eşliğinde Takip
+                                                                        </li>
+                                                                        <li class="d-flex align-items-center gap-2">
+                                                                            <i class="fa-solid fa-check text-success"></i> Düzenli Veli Bilgilendirme Raporu
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+
+                                                                <!-- Kart Alt Çubuğu -->
+                                                                <div
+                                                                    class="pt-3 border-top border-secondary-subtle d-flex align-items-center justify-content-between">
+                                                                    <span class="small fw-semibold text-muted">Seans: 45 Dk</span>
+                                                                    <a asp-controller="Services" asp-action="Detail" asp-route-id="@service.Id"
+                                                                       class="fw-semibold small text-decoration-none d-flex align-items-center"
+                                                                       style="color: var(--sunset-orange);">
+                                                                        Randevu Al <i class="fa-solid fa-arrow-right ms-2"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="text-center w-100 py-4 text-muted">
+                                                        <p class="mb-0">Henüz eklenmiş bir eğitim programı bulunmuyor.</p>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <!-- Sağ ve Sol Navigasyon Okları -->
+                                        <div class="swiper-button-prev shadow-sm rounded-circle"></div>
+                                        <div class="swiper-button-next shadow-sm rounded-circle"></div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- 4. UZMAN KADROMUZ -->
+                            <section id="staff" class="py-5 bg-light" style="border-top: 1px solid var(--border-color);">
+                                <div class="container py-3">
+                                    <div class="text-center mb-5" data-aos="fade-up">
+                                        <h6 class="fw-bold text-uppercase" style="color: var(--sunset-orange);">Kadromuz</h6>
+                                        <h2 class="fw-bold text-dark">Uzman Eğitmenlerimiz</h2>
+                                        <p class="text-muted">Geleceğe güvenle adım atmaları için deneyimli ve şefkatli kadromuzla yanınızdayız.</p>
+                                    </div>
+
+                                    <div class="position-relative px-lg-5" data-aos="fade-up">
+                                        <div class="swiper staffSwiper px-2">
+                                            <div class="swiper-wrapper pb-5">
+                                                @if (Model.StaffList != null && Model.StaffList.Any())
+                                                {
+                                                    @foreach (var staff in Model.StaffList)
+                                                    {
+                                                        <div class="swiper-slide h-auto">
+                                                            <div
+                                                                class="card staff-card h-100 p-3 d-flex flex-column justify-content-between position-relative">
+                                                                <span class="staff-badge">
+                                                                    <i class="fa-solid fa-star me-1 text-warning"></i> 4+ Yıl Klinik
+                                                                </span>
+
+                                                                <div>
+                                                                    <div class="mb-3 text-center position-relative pt-2">
+                                                                        <img src="@staff.ImageUrl" alt="@staff.FullName"
+                                                                             class="rounded-4 shadow-sm object-fit-cover"
+                                                                             style="width: 100%; height: 220px;">
+                                                                    </div>
+
+                                                                    <h4 class="h5 fw-bold mb-1 text-dark text-center">@staff.FullName</h4>
+                                                                    <p class="small fw-semibold mb-3 text-center" style="color: var(--primary-blue);">
+                                                                        @staff.Title</p>
+                                        
+                                                                        <p class="text-muted small lh-sm mb-3 text-center px-1">
+                                                                            @(string.IsNullOrEmpty(staff.Biography) ? "Gecikmiş dil, artikülasyon ve akıcı konuşma bozukluklarında bireysel ve grup terapis seansları yürütmektedir." :
+                                                                    (staff.Biography.Length > 110 ? staff.Biography.Substring(0, 110) + "..." :
+                                                                    staff.Biography))
+                                                                        </p>
+
+                                                                        <!-- Dinamik Uzmanlık Alanları / Etiketler -->
+                                                                        <div class="d-flex flex-wrap justify-content-center gap-1 mb-3">
+                                                                            @if (!string.IsNullOrEmpty(staff.Specialties))
+                                                                            {
+                                                                                foreach (var tag in staff.Specialties.Split(',',
+                                                                    StringSplitOptions.RemoveEmptyEntries))
+                                                                                {
+                                                                                    <span class="skill-pill">@tag.Trim()</span>
+                                                                                }
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <button type="button"
+                                                                                class="btn btn-staff-detail w-100 d-flex align-items-center justify-content-center gap-2"
+                                                                                data-bs-toggle="modal" data-bs-target="#staffModal@(staff.Id)">
+                                                                            <i class="fa-regular fa-circle-question fs-6"></i> Detaylı Bilgi & Özgeçmiş
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+                    else
+                                                    {
+                                                        <div class="text-center w-100 py-4 text-muted">
+                                                            <p class="mb-0">Henüz eklenmiş bir uzman personel bulunmuyor.</p>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-button-prev staff-btn-prev"></div>
+                                            <div class="swiper-button-next staff-btn-next"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ÖZGEÇMİŞ DETAY MODALLARI -->
+                                    @if (Model.StaffList != null && Model.StaffList.Any())
+                                    {
+                                        @foreach (var staff in Model.StaffList)
+                                        {
+                                            <div class="modal fade" id="staffModal@(staff.Id)" tabindex="-1" aria-labelledby="staffModalLabel@(staff.Id)"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                    <div class="modal-content border-0 rounded-4 shadow-lg bg-light" style="color: var(--text-main);">
+                                                        <div class="modal-header staff-modal-header-bg p-4 position-relative border-0">
+                                                            <div class="d-flex align-items-center gap-3">
+                                                                <img src="@staff.ImageUrl" alt="@staff.FullName"
+                                                                     class="rounded-circle shadow border border-3 border-white object-fit-cover"
+                                                                     style="width: 85px; height: 85px;">
+                                                                <div>
+                                                                    <span class="badge bg-white text-primary rounded-pill px-3 py-1 mb-1 fw-bold"
+                                                                          style="font-size: 0.65rem;">@staff.Department</span>
+                                                                    <h3 class="h4 fw-bold mb-0 text-white" id="staffModalLabel@(staff.Id)">@staff.FullName</h3>
+                                                                    <p class="small text-white-50 mb-0">@staff.Title</p>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+
+                                                        <div class="bg-white px-4 py-3 border-bottom d-flex flex-wrap gap-2 justify-content-center shadow-sm">
+                                                            <a asp-controller="Appointment" asp-action="Index"
+                                                               class="btn btn-primary rounded-pill px-4 py-2 fw-semibold small shadow-sm">
+                                                                <i class="fa-regular fa-calendar-check me-2"></i> Bu Uzmandan Randevu Al
+                                                            </a>
+                                                            <a href="https://wa.me/905528402100" target="_blank"
+                                                               class="btn btn-success rounded-pill px-4 py-2 fw-semibold small shadow-sm text-white">
+                                                                <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Danış
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="modal-body p-4">
+                                                            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+                                                                <h6 class="fw-bold text-dark mb-2 d-flex align-items-center gap-2">
+                                                                    <i class="fa-solid fa-book-open text-primary"></i> Hakkında & Mesleki Yaklaşım
+                                                                </h6>
+                                                                <p class="text-muted small lh-lg mb-0">
+                                                                    @(string.IsNullOrEmpty(staff.Biography) ? "Pediatrik konuşma sesi bozuklukları, gecikmiş dil ve konuşma, fonolojik bozukluklar, artikülasyon ve çocukluk çağı kekemeliğinde derin klinik uzmanlığa sahiptir." : staff.Biography)
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="row g-4">
+                                                                <!-- Dinamik Eğitim & Akademik Geçmiş -->
+                                                                <div class="col-md-6">
+                                                                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
+                                                                        <h6 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                                                                            <i class="fa-solid fa-graduation-cap text-primary"></i> Eğitim & Akademik Geçmiş
+                                                                        </h6>
+                                                                        <ul class="list-unstyled small text-muted mb-0 d-flex flex-column gap-3">
+                                                                            @if (!string.IsNullOrEmpty(staff.Education))
+                                                                            {
+                                                                                foreach (var edu in staff.Education.Split(new[] { '\r', '\n' },
+                                                                    StringSplitOptions.RemoveEmptyEntries))
+                                                                                {
+                                                                                    <li class="d-flex align-items-start gap-2">
+                                                                                        <i class="fa-solid fa-user-graduate text-primary mt-1"></i>
+                                                                                        <span>@edu.Trim()</span>
+                                                                                    </li>
+                                                                                }
+                                                                            }
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Dinamik Uluslararası & Ulusal Sertifikalar -->
+                                                                <div class="col-md-6">
+                                                                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
+                                                                        <h6 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                                                                            <i class="fa-solid fa-award text-warning"></i> Uluslararası & Ulusal Sertifikalar
+                                                                        </h6>
+                                                                        <ul class="list-unstyled small text-muted mb-0 d-flex flex-column gap-3">
+                                                                            @if (!string.IsNullOrEmpty(staff.Certificates))
+                                                                            {
+                                                                                foreach (var cert in staff.Certificates.Split(new[] { '\r', '\n' },
+                                                                    StringSplitOptions.RemoveEmptyEntries))
+                                                                                {
+                                                                                    <li class="d-flex align-items-start gap-2">
+                                                                                        <i class="fa-solid fa-medal text-warning mt-1"></i>
+                                                                                        <span>@cert.Trim()</span>
+                                                                                    </li>
+                                                                                }
+                                                                            }
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </section>
+                                <!-- 6. DUYURULAR VE ETKİNLİKLER -->
+                                <section id="announcements" class="py-5 bg-light" style="border-top: 1px solid var(--border-color);">
+                                    <div class="container py-3">
+                                        <div class="d-flex justify-content-between align-items-end mb-4" data-aos="fade-up">
+                                            <div>
+                                                <h6 class="fw-bold text-uppercase mb-1" style="color: var(--sunset-orange);">Güncel Gelişmeler</h6>
+                                                <h3 class="fw-bold m-0 text-dark">Duyurular & Etkinlikler</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row g-4">
+                                            @if (Model.AnnouncementList != null && Model.AnnouncementList.Any())
+                                            {
+                                                int delay = 100;
+                                                @foreach (var announcement in Model.AnnouncementList)
+                                                {
+                                                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="@delay">
+                                                        <div class="card hover-card border-0 shadow-sm p-3 rounded-4 h-100 bg-white"
+                                                             style="border: 1px solid var(--border-color) !important;">
+                                                            <div class="card-body">
+                                                                <span class="badge mb-2 px-3 py-1 rounded-pill"
+                                                                      style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">Duyuru</span>
+                                                                <h5 class="fw-bold mb-3 text-dark">@announcement.Title</h5>
+                                                                <p class="text-muted small lh-lg mb-3">@announcement.Content</p>
+                                                                <div class="text-muted small fw-semibold">
+                                                                    <i class="fa-regular fa-calendar me-1" style="color: var(--primary-blue);"></i>
+                                                                    @announcement.CreatedDate.ToString("dd MMMM yyyy")
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    delay += 100;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <div class="col-12 text-center text-muted py-4">
+                                                    <p class="mb-0">Şu anda aktif bir duyuru bulunmuyor.</p>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </section>
+
+
+                                <!-- 5. SIKÇA SORULAN SORULAR (SSS - ACCORDION BÖLÜMÜ) -->
+                                <section id="faq" class="py-5 bg-white" style="border-top: 1px solid var(--border-color);">
+                                    <div class="container py-4" style="max-width: 900px;">
+                                        <div class="text-center mb-5" data-aos="fade-up">
+                                            <span class="badge rounded-pill px-3 py-1 mb-2 fw-semibold"
+                                                  style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                                                <i class="fa-solid fa-circle-question me-1"></i> MERAK EDİLENLER
+                                            </span>
+                                            <h2 class="fw-bold display-6 text-dark">Sıkça Sorulan Sorular</h2>
+                                            <p class="text-muted">Özel eğitim süreçleri, devlet desteği ve kurumumuz hakkında en çok sorulan soruların
+                                                yanıtları.</p>
+                                            </div>
+
+                                            <div class="accordion custom-accordion" id="mefaFaqAccordion" data-aos="fade-up">
+            
+                                                <!-- Soru 1 -->
+                                                <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden"
+                                                     style="border: 1px solid var(--border-color) !important;">
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button fw-semibold text-dark bg-white py-3 px-4 shadow-none" type="button"
+                                                                data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                                                aria-controls="collapseOne">
+                                                            Eğitimleriniz gerçekten tamamen ücretsiz mi?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                                         data-bs-parent="#mefaFaqAccordion">
+                                                        <div class="accordion-body text-muted small lh-lg px-4 pb-4 pt-0">
+                                                            Evet. Sağlık kurulu raporu ve RAM (Rehberlik ve Araştırma Merkezi) tarafından uygun görülen tüm
+                                                            özel gereksinimli bireylerin eğitim masrafları T.C. Millî Eğitim Bakanlığı tarafından
+                                                            karşılanmaktadır. Ailelerden hiçbir ek ücret talep edilmez.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Soru 2 -->
+                                                <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden"
+                                                     style="border: 1px solid var(--border-color) !important;">
+                                                    <h2 class="accordion-header" id="headingTwo">
+                                                        <button class="accordion-button collapsed fw-semibold text-dark bg-white py-3 px-4 shadow-none"
+                                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                                                aria-controls="collapseTwo">
+                                                            RAM raporumuz yok, nasıl çıkartabiliriz? Yardımcı oluyor musunuz?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                                         data-bs-parent="#mefaFaqAccordion">
+                                                        <div class="accordion-body text-muted small lh-lg px-4 pb-4 pt-0">
+                                                            Kesinlikle yardımcı oluyoruz. Kurumumuza başvurduğunuzda hastane randevusu alma, sağlık kurulu
+                                                            raporu ve RAM yönlendirme süreçlerinin tüm adımlarında uzman danışmanlarımız sizlere rehberlik
+                                                            etmektedir.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Soru 3 -->
+                                                <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden"
+                                                     style="border: 1px solid var(--border-color) !important;">
+                                                    <h2 class="accordion-header" id="headingThree">
+                                                        <button class="accordion-button collapsed fw-semibold text-dark bg-white py-3 px-4 shadow-none"
+                                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                                                aria-controls="collapseThree">
+                                                            Servis hizmetiniz var mı ve ücretli mi?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                                         data-bs-parent="#mefaFaqAccordion">
+                                                        <div class="accordion-body text-muted small lh-lg px-4 pb-4 pt-0">
+                                                            Öğrencilerimiz için kurumumuza ait rehber personel eşliğinde kapıdan kapıya güvenli servis
+                                                            imkanımız bulunmaktadır ve bu hizmet tamamen ücretsizdir.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Soru 4 -->
+                                                <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden"
+                                                     style="border: 1px solid var(--border-color) !important;">
+                                                    <h2 class="accordion-header" id="headingFour">
+                                                        <button class="accordion-button collapsed fw-semibold text-dark bg-white py-3 px-4 shadow-none"
+                                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                                                aria-controls="collapseFour">
+                                                            Seanslar ne kadar sürüyor ve haftada kaç gün yapıyor?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                                         data-bs-parent="#mefaFaqAccordion">
+                                                        <div class="accordion-body text-muted small lh-lg px-4 pb-4 pt-0">
+                                                            Bireysel eğitim seanslarımız her biri 45 dakika sürecek şekilde planlanır. Öğrencinin rapor
+                                                            durumuna ve gelişim planına bağlı olarak haftalık ders saatleri uzman heyetimizce belirlenir.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Soru 5 -->
+                                                <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden"
+                                                     style="border: 1px solid var(--border-color) !important;">
+                                                    <h2 class="accordion-header" id="headingFive">
+                                                        <button class="accordion-button collapsed fw-semibold text-dark bg-white py-3 px-4 shadow-none"
+                                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
+                                                                aria-controls="collapseFive">
+                                                            Veliler seanslara veya dersliklere katılabiliyor mu?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                                         data-bs-parent="#mefaFaqAccordion">
+                                                        <div class="accordion-body text-muted small lh-lg px-4 pb-4 pt-0">
+                                                            Terapi süreçlerinde aile katılımı büyük önem taşır. Uzmanlarımızın uygun gördüğü aşamalarda
+                                                            velilerimiz gözlem odalarından veya seans içi yönlendirmelerle sürece dahil olabilmektedir.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- İLETİŞİM VE HARİTA BÖLÜMÜ -->
+                                    <section id="contact-map-section" class="py-5 bg-white" style="border-top: 1px solid var(--border-color);">
+                                        <div class="container py-4">
+                                            <div class="row align-items-center g-5">
+                                                <!-- Sol Taraf: İletişim Bilgileri ve Açıklama -->
+                                                <div class="col-lg-6" data-aos="fade-right">
+                                                    <div class="mb-4">
+                                                        <span class="fw-bold text-uppercase" style="color: var(--sunset-orange);">Bize Ulaşın</span>
+                                                        <h2 class="fw-bold display-6 mt-2 mb-3 text-dark">İletişimde Kalın</h2>
+                                                        <div style="width: 50px; height: 3px; background-color: var(--sunset-orange);" class="mb-4"></div>
+                                                        <p class="text-muted lh-lg">
+                                                            MEFA Özel Eğitim ve Rehabilitasyon Merkezi olarak sorularınızı yanıtlamaktan, merkezimizi
+                                                            ziyaret etmek isteyen ailelerimize rehberlik etmekten mutluluk duyarız.
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-start mb-3">
+                                                        <div class="fs-4 me-3 mt-1" style="color: var(--primary-blue);">
+                                                            <i class="fa-solid fa-location-dot"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="fw-bold mb-1 text-dark">Adresimiz</h6>
+                                                            <p class="text-muted small mb-0">Üniversite Mahallesi, Fırat Üniversitesi Kampüsü, Merkez /
+                                                                Elazığ</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="d-flex align-items-start mb-3">
+                                                            <div class="fs-4 me-3 mt-1" style="color: var(--primary-blue);">
+                                                                <i class="fa-solid fa-phone"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="fw-bold mb-1 text-dark">Telefon</h6>
+                                                                <p class="text-muted small mb-0">+90 (424) 000 00 00</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="fs-4 me-3 mt-1" style="color: var(--primary-blue);">
+                                                                <i class="fa-solid fa-envelope"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="fw-bold mb-1 text-dark">E-Posta Adresi</h6>
+                                                                <p class="text-muted small mb-0">info@mefaozelegitim.com</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Sağ Taraf: Google Maps Harita Entegrasyonu (Fırat Üniversitesi) -->
+                                                    <div class="col-lg-6" data-aos="fade-left">
+                                                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden p-2 bg-white"
+                                                             style="border: 1px solid var(--border-color) !important;">
+                                                            <div class="ratio ratio-16x9 rounded-4 overflow-hidden">
+                                                                <iframe
+                                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.6649749216!2d39.1895!3d38.6747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4076e053b47f3bcf%3A0x2aa78aa16859eab9!2zTcSscmF0IMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+                                                                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                                                                    referrerpolicy="no-referrer-when-downgrade">
+                                                                </iframe>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        @section Scripts {
+                                            <script>
+                                                // 1. Eğitim Programları Slider
+                                                const servicesSwiper = new Swiper('.servicesSwiper', {
+                                                    slidesPerView: 1,
+                                                    spaceBetween: 24,
+                                                    loop: true,
+                                                    observer: true,
+                                                    observeParents: true,
+                                                    autoplay: {
+                                                        delay: 4000,
+                                                        disableOnInteraction: false,
+                                                    },
+                                                    navigation: {
+                                                        nextEl: '#services .swiper-button-next',
+                                                        prevEl: '#services .swiper-button-prev',
+                                                    },
+                                                    breakpoints: {
+                                                        640: { slidesPerView: 2 },
+                                                        768: { slidesPerView: 3 },
+                                                        1024: { slidesPerView: 3 },
+                                                    },
+                                                });
+
+                                                // 2. Uzman Kadro Slider
+                                                const staffSwiper = new Swiper('.staffSwiper', {
+                                                    slidesPerView: 1,
+                                                    spaceBetween: 24,
+                                                    loop: true,
+                                                    observer: true,
+                                                    observeParents: true,
+                                                    autoplay: {
+                                                        delay: 3500,
+                                                        disableOnInteraction: false,
+                                                    },
+                                                    navigation: {
+                                                        nextEl: '#staff .staff-btn-next',
+                                                        prevEl: '#staff .staff-btn-prev',
+                                                    },
+                                                    breakpoints: {
+                                                        640: { slidesPerView: 2 },
+                                                        768: { slidesPerView: 3 },
+                                                        1024: { slidesPerView: 4 },
+                                                    },
+                                                });
+                                            </script>
+                                        }

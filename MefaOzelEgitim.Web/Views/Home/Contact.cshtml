@@ -1,0 +1,152 @@
+@{
+    ViewData["Title"] = "İletişim";
+}
+
+<div class="container py-5">
+    <!-- Geri Dön / Ana Sayfa Linki -->
+    <div class="mb-4">
+        <a href="@Url.Action("Index", "Home")" class="text-decoration-none text-muted fw-semibold">
+            <i class="fa-solid fa-arrow-left me-2"></i> Ana Sayfaya Dön
+        </a>
+    </div>
+
+    <!-- Başlık Alanı -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center">
+            <h1 class="fw-bold text-dark mb-2">Bize Ulaşın</h1>
+            <p class="text-muted fs-5">Sorularınız, önerileriniz veya randevu talepleriniz için bizimle her zaman
+                iletişime geçebilirsiniz.</p>
+            </div>
+        </div>
+
+        <div class="row g-5 justify-content-center">
+            <!-- Sol Taraf: İletişim Bilgileri -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 h-100 bg-white"
+                     style="border: 1px solid var(--border-color) !important;">
+                    <h3 class="fw-bold text-dark mb-4">İletişim Bilgilerimiz</h3>
+            
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="rounded-3 p-3 me-3 shadow-sm"
+                             style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                            <i class="fa-solid fa-location-dot fs-5"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-1">Adresimiz</h5>
+                            <p class="text-muted small mb-0 lh-lg">Üniversite Mahallesi, Fırat Üniversitesi Kampüsü, Merkez
+                                / Elazığ</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="rounded-3 p-3 me-3 shadow-sm"
+                                 style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                                <i class="fa-solid fa-phone fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Telefon</h5>
+                                <p class="text-muted small mb-0">+90 (424) 000 00 00</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="rounded-3 p-3 me-3 shadow-sm"
+                                 style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                                <i class="fa-solid fa-envelope fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">E-Posta Adresi</h5>
+                                <p class="text-muted small mb-0">info@mefaozelegitim.com</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <div class="rounded-3 p-3 me-3 shadow-sm"
+                                 style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                                <i class="fa-solid fa-clock fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Çalışma Saatleri</h5>
+                                <p class="text-muted small mb-0">Pazartesi - Cumartesi: 08:30 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sağ Taraf: Mesaj Gönderme Formu -->
+                @model MefaOzelEgitim.Web.Models.ContactSendViewModel
+
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white"
+                         style="border: 1px solid var(--border-color) !important;">
+                        <h3 class="fw-bold text-dark mb-4">Bize Mesaj Gönderin</h3>
+
+                        @if (TempData["SuccessMessage"] != null)
+                        {
+                            <div class="alert alert-success alert-dismissible fade show rounded-3 mb-4" role="alert">
+                                <i class="fa-solid fa-circle-check me-2"></i> @TempData["SuccessMessage"]
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
+
+                        <form asp-action="ContactSend" method="post">
+                            @Html.AntiForgeryToken()
+
+                            <div class="mb-3">
+                                <label asp-for="SenderName" class="form-label fw-semibold small text-dark">Adınız Soyadınız
+                                    *</label>
+                                    <input asp-for="SenderName" class="form-control rounded-3 py-2"
+                                           placeholder="Örn: Ahmet Yılmaz" />
+                                    <span asp-validation-for="SenderName" class="text-danger small"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="Email" class="form-label fw-semibold small text-dark">E-Posta Adresiniz
+                                            *</label>
+                                            <input asp-for="Email" class="form-control rounded-3 py-2" placeholder="ornek@mail.com" />
+                                            <span asp-validation-for="Email" class="text-danger small"></span>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label asp-for="Phone" class="form-label fw-semibold small text-dark">Telefon
+                                                Numaranız</label>
+                                                <input asp-for="Phone" class="form-control rounded-3 py-2" placeholder="05XX XXX XX XX" />
+                                                <span asp-validation-for="Phone" class="text-danger small"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Konu Alanı Eklendi -->
+                                        <div class="mb-3">
+                                            <label asp-for="Subject" class="form-label fw-semibold small text-dark">Konu</label>
+                                            <input asp-for="Subject" class="form-control rounded-3 py-2"
+                                                   placeholder="Örn: Özel Eğitim Randevu Talebi" />
+                                            <span asp-validation-for="Subject" class="text-danger small"></span>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label asp-for="Message" class="form-label fw-semibold small text-dark">Mesajınız *</label>
+                                            <textarea asp-for="Message" rows="4" class="form-control rounded-3"
+                                                      placeholder="Merkezimiz veya eğitimlerimiz hakkında sormak istedikleriniz..."></textarea>
+                                            <span asp-validation-for="Message" class="text-danger small"></span>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 fw-semibold shadow-sm">
+                                            <i class="fa-solid fa-paper-plane me-2"></i> Mesajı Gönder
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Harita Alanı -->
+                            <div class="row justify-content-center mt-5">
+                                <div class="col-lg-12">
+                                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white"
+                                         style="height: 350px; border: 1px solid var(--border-color) !important;">
+                                        <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.6649749216!2d39.1895!3d38.6747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4076e053b47f3bcf%3A0x2aa78aa16859eab9!2zTcSscmF0IMOcbml2ZXJzaXRlc2k!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+                                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

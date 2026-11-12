@@ -1,0 +1,134 @@
+@model MefaOzelEgitim.Web.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<section class="py-5 bg-light min-vh-100 d-flex align-items-center">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white position-relative overflow-hidden" data-aos="fade-up" style="border: 1px solid var(--border-color) !important;">
+                    
+                    <!-- Üst Dekoratif Renk Çizgisi (Maviden Turuncuya Geçiş) -->
+                    <div class="position-absolute top-0 start-0 w-100" style="height: 5px; background: linear-gradient(135deg, var(--primary-blue) 0%, var(--sunset-orange) 100%);"></div>
+
+                    <div class="text-center mb-4 pt-2">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3 shadow-sm" style="width: 65px; height: 65px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%); color: var(--primary-blue);">
+                            <i class="fa-solid fa-user-plus fs-4"></i>
+                        </div>
+                        <h2 class="fw-bold mb-1 text-dark">Hesap Oluşturun</h2>
+                        <p class="text-muted small">MEFA Özel Eğitim'e hemen katılın</p>
+                    </div>
+
+                    <form asp-action="Register" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-3 small py-2 mb-3"></div>
+                        
+                        <div class="row">
+                            <!-- Ad -->
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="FirstName" class="form-label fw-semibold small text-secondary">Ad</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 rounded-start-3 text-muted ps-3">
+                                        <i class="fa-regular fa-user"></i>
+                                    </span>
+                                    <input asp-for="FirstName" class="form-control bg-light border-start-0 fs-6 rounded-end-3 py-2" placeholder="Adınız">
+                                </div>
+                                <span asp-validation-for="FirstName" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Soyad -->
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LastName" class="form-label fw-semibold small text-secondary">Soyad</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 rounded-start-3 text-muted ps-3">
+                                        <i class="fa-regular fa-user"></i>
+                                    </span>
+                                    <input asp-for="LastName" class="form-control bg-light border-start-0 fs-6 rounded-end-3 py-2" placeholder="Soyadınız">
+                                </div>
+                                <span asp-validation-for="LastName" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <!-- E-posta -->
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-semibold small text-secondary">E-posta Adresi</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 rounded-start-3 text-muted ps-3">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </span>
+                                <input asp-for="Email" class="form-control bg-light border-start-0 fs-6 rounded-end-3 py-2" placeholder="ornek@mail.com">
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Şifre -->
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-semibold small text-secondary">Şifre</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 rounded-start-3 text-muted ps-3">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input asp-for="Password" type="password" id="passwordInput" class="form-control bg-light border-start-0 border-end-0 fs-6 py-2" placeholder="••••••••">
+                                <button type="button" id="togglePassword" class="input-group-text bg-light border-start-0 rounded-end-3 text-muted px-3" style="cursor: pointer;" title="Şifreyi Göster/Gizle">
+                                    <i class="fa-regular fa-eye" id="toggleIcon"></i>
+                                </button>
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Şifre Tekrar -->
+                        <div class="mb-4">
+                            <label asp-for="ConfirmPassword" class="form-label fw-semibold small text-secondary">Şifre Tekrar</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 rounded-start-3 text-muted ps-3">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input asp-for="ConfirmPassword" type="password" id="confirmPasswordInput" class="form-control bg-light border-start-0 border-end-0 fs-6 py-2" placeholder="••••••••">
+                                <button type="button" id="toggleConfirmPassword" class="input-group-text bg-light border-start-0 rounded-end-3 text-muted px-3" style="cursor: pointer;" title="Şifreyi Göster/Gizle">
+                                    <i class="fa-regular fa-eye" id="toggleConfirmIcon"></i>
+                                </button>
+                            </div>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Gradyant Kayıt Ol Butonu -->
+                        <button type="submit" class="btn w-100 py-3 rounded-3 fw-bold text-white shadow-sm"
+                                style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important; border: none; transition: all 0.2s ease;">
+                            <i class="fa-solid fa-user-plus me-2"></i> Kayıt Ol
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-4 pt-3 border-top">
+                        <p class="small text-muted mb-0">Zaten hesabınız var mı? <a asp-action="Login" class="fw-semibold text-decoration-none" style="color: var(--primary-blue);">Giriş Yap</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Şifre Göster/Gizle İşlevi
+            function setupPasswordToggle(toggleId, inputId, iconId) {
+                const toggleBtn = document.getElementById(toggleId);
+                const inputField = document.getElementById(inputId);
+                const iconField = document.getElementById(iconId);
+
+                if (toggleBtn && inputField && iconField) {
+                    toggleBtn.addEventListener('click', function () {
+                        const type = inputField.getAttribute('type') === 'password' ? 'text' : 'password';
+                        inputField.setAttribute('type', type);
+                        iconField.classList.toggle('fa-eye');
+                        iconField.classList.toggle('fa-eye-slash');
+                    });
+                }
+            }
+
+            setupPasswordToggle('togglePassword', 'passwordInput', 'toggleIcon');
+            setupPasswordToggle('toggleConfirmPassword', 'confirmPasswordInput', 'toggleConfirmIcon');
+        });
+    </script>
+}

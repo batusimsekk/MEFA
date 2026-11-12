@@ -1,0 +1,17 @@
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\bin\Debug\net8.0\MefaOzelEgitim.Business.deps.json
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\bin\Debug\net8.0\MefaOzelEgitim.Business.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\bin\Debug\net8.0\MefaOzelEgitim.Business.pdb
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\bin\Debug\net8.0\MefaOzelEgitim.DataAccess.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\bin\Debug\net8.0\MefaOzelEgitim.Domain.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\bin\Debug\net8.0\MefaOzelEgitim.DataAccess.pdb
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\bin\Debug\net8.0\MefaOzelEgitim.Domain.pdb
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzelEgitim.Business.csproj.AssemblyReference.cache
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzelEgitim.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzelEgitim.Business.AssemblyInfoInputs.cache
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzelEgitim.Business.AssemblyInfo.cs
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzelEgitim.Business.csproj.CoreCompileInputs.cache
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzel.855D091C.Up2Date
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzelEgitim.Business.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\refint\MefaOzelEgitim.Business.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\MefaOzelEgitim.Business.pdb
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.Business\obj\Debug\net8.0\ref\MefaOzelEgitim.Business.dll

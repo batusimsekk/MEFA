@@ -1,0 +1,103 @@
+@model MefaOzelEgitim.Domain.Entities.Staff
+
+@{
+    ViewData["Title"] = "Yeni Uzman Ekle";
+}
+
+<div class="row justify-content-center py-3">
+    <div class="col-lg-8">
+        <!-- Kart Arka Planı ve Kenarlıklar Midnight Black / Card Uyumlu -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-card">
+            <!-- Başlık ve İkon Alanı -->
+            <div class="d-flex align-items-center mb-4 pb-3 border-bottom border-secondary opacity-75">
+                <div class="rounded-4 d-flex align-items-center justify-content-center me-3 shadow-sm" style="background-color: rgba(59, 130, 246, 0.15); color: #3b82f6; width: 55px; height: 55px; min-width: 55px;">
+                    <i class="fa-solid fa-user-plus fs-4"></i>
+                </div>
+                <div>
+                    <h3 class="fw-bold text-light mb-1">Yeni Uzman Ekle</h3>
+                    <p class="text-muted small mb-0">Merkezinize yeni bir öğretmen veya uzman kaydedin.</p>
+                </div>
+            </div>
+
+            <!-- enctype="multipart/form-data" dosya yükleme için aktif -->
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-3 small mb-4" role="alert"></div>
+
+                <div class="mb-3">
+                    <label asp-for="FullName" class="form-label fw-semibold text-light small">Ad Soyad *</label>
+                    <input asp-for="FullName" class="form-control rounded-3 py-2 bg-dark text-light border-secondary" placeholder="Örn: Uzm. Psk. Zeynep Kaya" required />
+                    <span asp-validation-for="FullName" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-semibold text-light small">Unvan / Branş *</label>
+                    <input asp-for="Title" class="form-control rounded-3 py-2 bg-dark text-light border-secondary" placeholder="Örn: Özel Eğitim Uzmanı & Psikolog" required />
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                </div>
+
+                <!-- Departman / Birim (Rozet için) -->
+                <div class="mb-3">
+                    <label asp-for="Department" class="form-label fw-semibold text-light small">Uzmanlık Birimi / Departman *</label>
+                    <input asp-for="Department" class="form-control rounded-3 py-2 bg-dark text-light border-secondary" placeholder="Örn: Dil & Konuşma Terapi Birimi" required />
+                    <span asp-validation-for="Department" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Biography" class="form-label fw-semibold text-light small">Biyografi / Özgeçmiş</label>
+                    <textarea asp-for="Biography" class="form-control rounded-3 bg-dark text-light border-secondary" rows="4" placeholder="Uzman hakkında kısa özgeçmiş..."></textarea>
+                    <span asp-validation-for="Biography" class="text-danger small"></span>
+                </div>
+
+                <!-- Eğitim & Akademik Geçmiş -->
+                <div class="mb-3">
+                    <label asp-for="Education" class="form-label fw-semibold text-light small">Eğitim & Akademik Geçmiş</label>
+                    <textarea asp-for="Education" class="form-control rounded-3 bg-dark text-light border-secondary" rows="4" placeholder="Her bir eğitimi yeni bir satıra yazın:&#10;Hacettepe Üniversitesi - Dil ve Konuşma Terapisi (Lisans)&#10;Anadolu Üniversitesi DİLKOM..."></textarea>
+                    <small class="text-muted d-block mt-1">Her satır web sitesinde yeni bir ikonlu eğitim maddesi olarak görünecektir.</small>
+                    <span asp-validation-for="Education" class="text-danger small"></span>
+                </div>
+
+                <!-- Uluslararası & Ulusal Sertifikalar -->
+                <div class="mb-3">
+                    <label asp-for="Certificates" class="form-label fw-semibold text-light small">Uluslararası & Ulusal Sertifikalar</label>
+                    <textarea asp-for="Certificates" class="form-control rounded-3 bg-dark text-light border-secondary" rows="4" placeholder="Her bir sertifikayı yeni bir satıra yazın:&#10;PROMPT 1. ve 2. Düzey Eğitimi&#10;Lidcombe Erken Dönem Kekemelik..."></textarea>
+                    <small class="text-muted d-block mt-1">Her satır web sitesinde yeni bir sertifika maddesi olarak görünecektir.</small>
+                    <span asp-validation-for="Certificates" class="text-danger small"></span>
+                </div>
+
+                <!-- Yeni Eklenen Alan: Uzmanlık Alanları / Etiketler -->
+                <div class="mb-3">
+                    <label asp-for="Specialties" class="form-label fw-semibold text-light small">Uzmanlık Alanları / Etiketler</label>
+                    <input asp-for="Specialties" class="form-control rounded-3 py-2 bg-dark text-light border-secondary" placeholder="Virgülle ayırarak yazın: Artikülasyon, Gecikmiş Dil, Kekemelik" />
+                    <small class="text-muted d-block mt-1">Kart üzerinde rozet olarak görünmesi için aralarına virgül (,) koyarak yazın.</small>
+                    <span asp-validation-for="Specialties" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DisplayOrder" class="form-label fw-semibold text-light small">Sıralama (Görüntülenme Önceliği)</label>
+                    <input asp-for="DisplayOrder" class="form-control rounded-3 py-2 bg-dark text-light border-secondary" placeholder="1" />
+                    <span asp-validation-for="DisplayOrder" class="text-danger small"></span>
+                </div>
+
+                <!-- Modern ve Şık Dosya Yükleme Alanı -->
+                <div class="mb-4 p-4 rounded-4" style="background-color: rgba(255, 255, 255, 0.02); border: 1px dashed var(--border-color);">
+                    <label class="form-label fw-semibold text-light small d-block mb-2">
+                        <i class="fa-solid fa-image me-1 text-primary"></i> Profil Fotoğrafı
+                    </label>
+                    <input type="file" name="imageFile" class="form-control rounded-3 py-2 bg-dark text-light border-secondary" accept="image/*" />
+                    <span class="text-muted fs-7 mt-1 d-block">Desteklenen formatlar: JPG, PNG, WEBP</span>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 pt-2">
+                    <a asp-action="Index" class="btn btn-secondary px-4 rounded-3 fw-semibold text-light">İptal</a>
+                    <button type="submit" class="btn btn-primary px-4 rounded-3 fw-semibold shadow-sm">
+                        <i class="fa-solid fa-save me-2"></i> Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

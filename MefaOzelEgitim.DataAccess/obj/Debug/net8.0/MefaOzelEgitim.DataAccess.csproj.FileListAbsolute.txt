@@ -1,0 +1,17 @@
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\bin\Debug\net8.0\MefaOzelEgitim.DataAccess.deps.json
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\bin\Debug\net8.0\MefaOzelEgitim.DataAccess.runtimeconfig.json
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\bin\Debug\net8.0\MefaOzelEgitim.DataAccess.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\bin\Debug\net8.0\MefaOzelEgitim.DataAccess.pdb
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\bin\Debug\net8.0\MefaOzelEgitim.Domain.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\bin\Debug\net8.0\MefaOzelEgitim.Domain.pdb
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.csproj.AssemblyReference.cache
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.AssemblyInfoInputs.cache
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.AssemblyInfo.cs
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzel.CA25D60E.Up2Date
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\refint\MefaOzelEgitim.DataAccess.dll
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.pdb
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\MefaOzelEgitim.DataAccess.genruntimeconfig.cache
+C:\Users\batus\OneDrive\Masaüstü\MEFA\MefaOzelEgitim.DataAccess\obj\Debug\net8.0\ref\MefaOzelEgitim.DataAccess.dll

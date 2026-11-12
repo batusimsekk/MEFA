@@ -1,0 +1,320 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MEFA Özel Eğitim ve Rehabilitasyon Merkezi</title>
+
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- FontAwesome Icon Seti -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- AOS (Animate on Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- site.css Bağlantısı -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+
+    <!-- Header ve Navbar Alanı -->
+    <header class="mefa-header sticky-top bg-white shadow-sm" style="border-bottom: 1px solid var(--border-color);">
+        <div class="container-xxl px-3 px-lg-4">
+            <!-- Üst Satır: Logo, İletişim Bilgileri ve Butonlar -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between py-3 border-bottom border-secondary border-opacity-10">
+                
+                <!-- Sol: Logo ve Başlık -->
+                <a class="navbar-brand d-flex align-items-center text-decoration-none me-3" href="/">
+                    <div class="bg-primary text-white rounded-3 p-2 me-2 d-flex align-items-center justify-content-center shadow-sm"
+                         style="width: 42px; height: 42px;">
+                        <i class="fa-solid fa-hands-holding-child fs-5"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold text-dark tracking-wide" style="font-size: 1.05rem;">MEFA ÖZEL EĞİTİM</span>
+                            <span class="badge bg-danger bg-opacity-75 text-white font-monospace" style="font-size: 0.65rem;">T.C. MEB</span>
+                        </div>
+                        <small class="text-muted fw-semibold" style="font-size: 0.68rem !important; line-height: 1;">VE REHABİLİTASYON MERKEZİ</small>
+                    </div>
+                </a>
+
+                <!-- Sağ: Butonlar -->
+                <div class="d-flex align-items-center gap-2 flex-wrap mt-2 mt-md-0">
+                    
+                    <!-- 1. Uzman Danışma Hattı Kutusu -->
+                    <div class="d-none d-xl-flex align-items-center px-3 py-1 rounded-pill bg-light"
+                         style="border: 1px solid var(--border-color);">
+                        <i class="fa-solid fa-phone-volume text-primary me-2 fs-6"></i>
+                        <div class="text-start lh-1">
+                            <span class="d-block text-muted fw-semibold" style="font-size: 0.62rem; letter-spacing: 0.5px;">UZMAN DANIŞMA HATTI</span>
+                            <a href="tel:05528402100" class="text-dark fw-bold text-decoration-none" style="font-size: 0.85rem;">0 (552) 840 21 00</a>
+                        </div>
+                    </div>
+
+                    <!-- 2. WhatsApp Butonu -->
+                    <a href="https://wa.me/905528402100" target="_blank"
+                       class="btn btn-whatsapp rounded-pill px-3 py-2 fw-semibold d-flex align-items-center gap-2 text-white shadow-sm"
+                       style="border: none; font-size: 0.85rem; transition: all 0.25s ease;">
+                        <i class="fa-brands fa-whatsapp fs-5"></i> WhatsApp
+                    </a>
+
+                    <!-- 3. Ücretsiz Değerlendirme Butonu -->
+                    <a asp-controller="Appointment"
+                       class="btn btn-appointment-blue rounded-pill px-3 py-2 fw-semibold d-flex align-items-center gap-2 text-white shadow-sm"
+                       style="background-color: var(--primary-blue); border: none; font-size: 0.85rem; transition: all 0.25s ease;">
+                        <i class="fa-regular fa-calendar-check fs-5"></i> Ücretsiz Değerlendirme
+                    </a>
+
+                    <!-- 4. Üyelik Durum Kontrolü (Giriş / Profil) -->
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var currentUser = await UserManager.GetUserAsync(User);
+                        var claims = currentUser != null ? await UserManager.GetClaimsAsync(currentUser) : new List<System.Security.Claims.Claim>();
+                        var firstName = claims.FirstOrDefault(c => c.Type == "FirstName")?.Value ?? currentUser?.UserName;
+                        var lastName = claims.FirstOrDefault(c => c.Type == "LastName")?.Value;
+                        var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Admin");
+
+                        <div class="dropdown ms-1">
+                            <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2 py-2 px-3 small rounded-pill fw-semibold shadow-sm"
+                                    type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="border: 1px solid var(--border-color);">
+                                <i class="fa-solid fa-user-circle text-primary"></i>
+                                <span>@firstName @lastName</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 mt-2">
+                                @if (isAdmin)
+                                {
+                                    <li>
+                                        <a class="dropdown-item py-2 text-primary fw-semibold small" asp-controller="Admin" asp-action="Dashboard">
+                                            <i class="fa-solid fa-chart-line me-2"></i>Yönetim Paneli
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a class="dropdown-item py-2 small" asp-controller="Appointment" asp-action="MyAppointments">
+                                            <i class="fa-solid fa-calendar-check me-2 text-muted"></i>Randevularım
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                }
+                                <li>
+                                    <form asp-controller="Account" asp-action="Logout" method="post" class="px-0 m-0">
+                                        <button type="submit" class="dropdown-item py-2 text-danger fw-semibold small">
+                                            <i class="fa-solid fa-right-from-bracket me-2"></i>Çıkış Yap
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- 4. Giriş Butonu -->
+                        <a asp-controller="Account" asp-action="Login"
+                           class="btn btn-login-hover bg-white rounded-pill px-3 py-2 fw-semibold d-flex align-items-center gap-2 text-dark shadow-sm ms-1"
+                           style="border: 1px solid var(--border-color); font-size: 0.85rem;">
+                            <i class="fa-regular fa-user text-muted"></i> Giriş
+                        </a>
+                    }
+                </div>
+            </div>
+
+            <!-- Alt Satır: Menü Linkleri ve MEB Rozeti -->
+            <nav class="navbar navbar-expand-lg navbar-light py-2">
+                <button class="navbar-toggler ms-auto border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mefaNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between align-items-center" id="mefaNavbar">
+                    <ul class="navbar-nav gap-2">
+                        <li class="nav-item"><a class="nav-link px-3 rounded-2 fw-semibold text-dark" href="@Url.Action("Index", "Home")">Ana Sayfa</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-2 fw-semibold text-dark" href="@Url.Action("About", "Home")">Hakkımızda</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-2 fw-semibold text-dark" href="@Url.Action("Index", "Home")#services">Eğitimlerimiz</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-2 fw-semibold text-dark" href="@Url.Action("Index", "Home")#staff">Kadromuz</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-2 fw-semibold text-dark" href="@Url.Action("Index", "Home")#announcements">Duyurular</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 rounded-2 fw-semibold text-dark" href="@Url.Action("Contact", "Home")">İletişim</a></li>
+                    </ul>
+
+                    <!-- Sağ Alt MEB Rozeti -->
+                    <div class="d-none d-lg-flex align-items-center px-3 py-1 rounded-pill bg-light mt-2 mt-lg-0"
+                         style="border: 1px solid var(--border-color);">
+                        <span class="rounded-circle bg-success me-2" style="width: 8px; height: 8px; display: inline-block;"></span>
+                        <small class="fw-semibold text-success" style="font-size: 0.78rem;">%100 MEB Destekli & Ücretsiz Servis</small>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Ana Gövde -->
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Footer (Koyu Tema Zengin Tasarım) -->
+    <footer class="pt-5 pb-3 text-light" style="background-color: #0b0f19; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="container-xxl py-4 px-3 px-lg-4">
+            <div class="row g-4">
+                
+                <!-- Sütun 1: Kurum Tanıtımı -->
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-3 p-2 me-2 d-flex align-items-center justify-content-center shadow-sm"
+                             style="width: 38px; height: 38px;">
+                            <i class="fa-solid fa-hands-holding-child fs-6"></i>
+                        </div>
+                        <h5 class="text-white fw-bold mb-0" style="font-size: 1.1rem;">MEFA Özel Eğitim</h5>
+                    </div>
+                    <p class="small text-muted lh-lg mb-4">
+                        Her çocuğun öğrenme yolculuğu özeldir. Uzman kadromuz ve modern bilimsel yaklaşımlarımızla çocuklarımızın ve ailelerimizin yanındayız.
+                    </p>
+                </div>
+
+                <!-- Sütun 2: Kurumsal Bağlantılar -->
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <h5 class="text-white fs-6 fw-bold mb-3">Kurumsal Bağlantılar</h5>
+                    <ul class="list-unstyled small d-flex flex-column gap-2">
+                        <li><a href="@Url.Action("About", "Home")" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Hakkımızda & Vizyonumuz</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Eğitim Programlarımız</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#announcements" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Duyurular & Etkinlikler</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#staff" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Uzman Eğitim Kadromuz</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#faq" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Sıkça Sorulan Sorular</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sütun 3: Eğitim ve Terapi -->
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <h5 class="text-white fs-6 fw-bold mb-3">Eğitim ve Terapi</h5>
+                    <ul class="list-unstyled small d-flex flex-column gap-2">
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Dil ve Konuşma Terapisi</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Otizm Spektrum Bozukluğu</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Duyu Bütünleme Terapisi</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Özel Öğrenme Güçlüğü (Disleksi)</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Pediatrik Fizik Tedavi</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>TheraSuit Uzay Terapi</a></li>
+                        <li><a href="@Url.Action("Index", "Home")#services" class="text-decoration-none text-muted"><i class="fa-solid fa-chevron-right me-2 text-primary" style="font-size: 0.65rem;"></i>Erken Çocukluk Müdahalesi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sütun 4: İletişim & Danışma -->
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <h5 class="text-white fs-6 fw-bold mb-3">İletişim & Danışma</h5>
+                    <div class="d-flex align-items-start mb-2">
+                        <i class="fa-solid fa-phone text-primary mt-1 me-2"></i>
+                        <div>
+                            <span class="d-block text-muted" style="font-size: 0.65rem;">TELEFON HATTI</span>
+                            <a href="tel:04240000000" class="text-light fw-bold text-decoration-none small">0 (424) 000 00 00</a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-2">
+                        <i class="fa-solid fa-envelope text-primary mt-1 me-2"></i>
+                        <div>
+                            <span class="d-block text-muted" style="font-size: 0.65rem;">KURUMSAL E-POSTA</span>
+                            <span class="text-light small">mefaozelegitim@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fa-solid fa-clock text-primary mt-1 me-2"></i>
+                        <div>
+                            <span class="d-block text-muted" style="font-size: 0.65rem;">ÇALIŞMA SAATLERİ</span>
+                            <span class="text-light small">Pzt - Cmt: 08:30 - 18:00</span>
+                        </div>
+                    </div>
+
+                    <!-- MEB Ruhsat & Servis Kart Kutusu -->
+                    <div class="p-3 rounded-3" style="background-color: #111827; border: 1px solid rgba(255, 255, 255, 0.08);">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="rounded-circle bg-success" style="width: 8px; height: 8px; display: inline-block;"></span>
+                            <span class="text-light fw-bold" style="font-size: 0.75rem;">T.C. Millî Eğitim Bakanlığı Ruhsatlı</span>
+                        </div>
+                        <p class="text-muted mb-0 mt-1" style="font-size: 0.7rem;">Ücretsiz Servis Ağı & RAM Destekli Eğitim</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary my-4 opacity-10">
+
+            <!-- Alt Bilgi / Yasal Linkler -->
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="small text-muted mb-0">&copy; 2026 MEFA Özel Eğitim ve Rehabilitasyon Merkezi. Tüm Hakları Saklıdır.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-3 small">
+                        <a href="#" class="text-decoration-none text-muted">KVKK Aydınlatma Metni</a>
+                        <span class="text-muted">|</span>
+                        <a href="#" class="text-decoration-none text-muted">Gizlilik Politikası</a>
+                        <span class="text-muted">|</span>
+                        <a href="#" class="text-decoration-none text-muted">MEB Mevzuatı</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sağ Alt Sabit "Yukarı Çık" Butonu -->
+    <button type="button" id="backToTopBtn" class="btn shadow-sm rounded-3 p-0 d-flex align-items-center justify-content-center" title="Başa Dön">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Animasyon Başlatma
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Yukarı Çık Butonu Mantığı
+        const backToTopButton = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

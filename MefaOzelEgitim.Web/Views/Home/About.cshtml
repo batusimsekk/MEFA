@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "Hakkımızda";
+}
+
+<div class="container py-5">
+    <!-- Geri Dön / Ana Sayfa Linki -->
+    <div class="mb-4">
+        <a href="@Url.Action("Index", "Home")" class="text-decoration-none text-muted fw-semibold">
+            <i class="fa-solid fa-arrow-left me-2"></i> Ana Sayfaya Dön
+        </a>
+    </div>
+
+    <!-- Üst Banner / Kahraman Alanı -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10 text-center">
+            <div class="rounded-4 p-4 p-md-5 shadow-sm bg-white" style="border: 1px solid var(--border-color) !important;">
+                <div class="mb-3">
+                    <span class="rounded-circle p-3 d-inline-flex align-items-center justify-content-center shadow-sm" style="width: 65px; height: 65px; background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                        <i class="fa-solid fa-hands-holding-child fs-3"></i>
+                    </span>
+                </div>
+                <h1 class="fw-bold text-dark mb-3">Biz Kimiz?</h1>
+                <p class="text-muted fs-5 mb-0 lh-lg px-md-4">
+                    MEFA Özel Eğitim ve Rehabilitasyon Merkezi olarak, her çocuğun öğrenme yolculuğunun özel olduğuna inanıyor; uzman kadromuz ve modern yaklaşımlarımızla yanlarında oluyoruz.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kurumsal Hikaye / Açıklama -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white" style="border: 1px solid var(--border-color) !important;">
+                <h3 class="fw-bold text-dark mb-4">Eğitimde Sevgi, Güven ve Profesyonellik</h3>
+                <p class="text-muted lh-lg mb-4">
+                    Kurulduğumuz günden bu yana, özel gereksinimli bireylerin toplumsal hayata tam katılımını sağlamak, potansiyellerini en üst düzeye çıkarmak ve ailelerimize güven dolu bir rehberlik sunmak için çalışıyoruz. Bireyselleştirilmiş eğitim programlarımızla her öğrencimizin öğrenme hızına ve gelişim alanlarına uygun özel seanslar tasarlıyoruz.
+                </p>
+                <p class="text-muted lh-lg mb-0">
+                    Fizyoterapiden özel öğrenme güçlüğüne, otizm spektrum eğitiminden dil ve konuşma terapisine kadar geniş bir yelpazede, bilimsel temelli ve güncel yöntemleri merkezimizde uyguluyoruz.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Misyon & Vizyon Kartları -->
+    <div class="row justify-content-center g-4 mb-5">
+        <div class="col-lg-5 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white" style="border: 1px solid var(--border-color) !important;">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="rounded-3 p-3 me-3 shadow-sm" style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                        <i class="fa-solid fa-bullseye fs-4"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-0">Misyonumuz</h4>
+                </div>
+                <p class="text-muted lh-lg mb-0">
+                    Özel gereksinimli çocuklarımızın akademik, sosyal ve duygusal gelişimlerini destekleyerek kendi ayakları üzerinde durabilen, bağımsız bireyler olmalarını sağlamak ve ailelerimizin bu süreçteki en büyük destekçisi olmak.
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white" style="border: 1px solid var(--border-color) !important;">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="rounded-3 p-3 me-3 shadow-sm" style="background-color: rgba(2, 132, 199, 0.1); color: var(--primary-blue);">
+                        <i class="fa-solid fa-eye fs-4"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-0">Vizyonumuz</h4>
+                </div>
+                <p class="text-muted lh-lg mb-0">
+                    Özel eğitim ve rehabilitasyon alanında yenilikçi yaklaşımlarımız, uzman kadromuz ve yüksek kalite standartlarımızla örnek gösterilen, öncü ve güvenilir bir eğitim merkezi olmak.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Neden Biz? Bölümü -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white" style="border: 1px solid var(--border-color) !important;">
+                <h3 class="fw-bold text-dark text-center mb-4">Neden MEFA Özel Eğitim?</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3 fs-4" style="color: var(--primary-blue);"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Uzman ve Deneyimli Kadro</h5>
+                                <p class="text-muted small mb-0">Alanında uzman eğitmenler ve terapistlerle profesyonel yaklaşım.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3 fs-4" style="color: var(--primary-blue);"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Bireyselleştirilmiş Eğitim</h5>
+                                <p class="text-muted small mb-0">Her çocuğun gelişim düzeyine özel hazırlanan eğitim planları.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3 fs-4" style="color: var(--primary-blue);"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Modern Donanım</h5>
+                                <p class="text-muted small mb-0">Çocukların konforu ve gelişimi için tasarlanmış özel seans odaları.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3 fs-4" style="color: var(--primary-blue);"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h5 class="fw-bold text-dark mb-1">Aile Odaklı İletişim</h5>
+                                <p class="text-muted small mb-0">Süreç boyunca ailelerle sürekli iletişim ve şeffaf bilgilendirme.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

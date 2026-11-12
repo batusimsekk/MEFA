@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MefaOzelEgitim.Business/MefaOzelEgitim.Business.csproj" />
+  <Project Path="MefaOzelEgitim.DataAccess/MefaOzelEgitim.DataAccess.csproj" />
+  <Project Path="MefaOzelEgitim.Domain/MefaOzelEgitim.Domain.csproj" />
+  <Project Path="MefaOzelEgitim.Web/MefaOzelEgitim.Web.csproj" />
+</Solution>

@@ -1,0 +1,221 @@
+:root {
+    /* %60 Midnight Black (Dominant Zeminler & Alanlar) */
+    --bg-midnight: #0b0f19;
+    --sidebar-bg: #111827;
+    --card-bg: #1f2937;
+    --topbar-bg: #111827;
+    --body-text: #9ca3af;
+    --heading-text: #f3f4f6;
+
+    /* %30 Electric Blue (Yapı, Çerçeveler, Aktif Ögeler & İkonlar) */
+    --electric-blue: #3b82f6;
+    --electric-blue-hover: #2563eb;
+    --border-color: #374151;
+    --active-link-bg: rgba(59, 130, 246, 0.12);
+
+    /* %10 Sunset Orange (Vurgular, Kaydet Butonları & CTA Alanları) */
+    --sunset-orange: #f97316;
+    --sunset-orange-hover: #ea580c;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-midnight);
+    color: var(--body-text);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* --- Sidebar (Sol Menü) Tasarımı (%60 & %30) --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: var(--heading-text);
+    z-index: 100;
+    border-right: 1px solid var(--border-color);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-brand {
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--heading-text);
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+    color: var(--body-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+    color: var(--heading-text);
+    background-color: var(--active-link-bg);
+    border-left: 4px solid var(--electric-blue);
+    /* %30 Electric Blue Vurgu */
+}
+
+.sidebar-menu li a i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+    color: var(--electric-blue);
+    /* %30 Electric Blue İkonlar */
+}
+
+/* --- Ana İçerik Alanı --- */
+.main-content {
+    margin-left: 260px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Topbar Tasarımı --- */
+.admin-topbar {
+    height: 70px;
+    background-color: var(--topbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.content-body {
+    padding: 2rem;
+    flex: 1;
+}
+
+/* --- Kartlar, Tablolar ve Formlar (%60 & %30 Uyumlu) --- */
+.card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--heading-text) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    color: var(--heading-text) !important;
+    border-color: var(--border-color) !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+    color: var(--heading-text);
+}
+
+.form-control,
+.form-select {
+    background-color: var(--bg-midnight) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--heading-text) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--bg-midnight) !important;
+    border-color: var(--electric-blue) !important;
+    color: var(--heading-text) !important;
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+}
+
+/* --- %10 Sunset Orange (Birincil Butonlar ve Dikkat Çekici CTA'lar) --- */
+.btn-primary,
+.btn-success {
+    background-color: var(--sunset-orange) !important;
+    border-color: var(--sunset-orange) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: var(--sunset-orange-hover) !important;
+    border-color: var(--sunset-orange-hover) !important;
+}
+
+/* Metin Renk Düzeltmeleri */
+.text-dark {
+    color: var(--heading-text) !important;
+}
+
+.text-muted {
+    color: var(--body-text) !important;
+}
+
+/* --- Kart ve Tablo Kontrast Düzeltmeleri --- */
+.card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--heading-text) !important;
+}
+
+/* Tablo elemanlarının arka planını şeffaf yap ve metin rengini sabitle */
+.table {
+    color: var(--heading-text) !important;
+    background-color: transparent !important;
+    border-color: var(--border-color) !important;
+}
+
+.table th,
+.table td {
+    color: var(--heading-text) !important;
+    background-color: transparent !important;
+    border-color: var(--border-color) !important;
+    vertical-align: middle;
+}
+
+/* Tablo içindeki isimler ve başlıkların net görünmesi için */
+.table td span,
+.table td div,
+.table td p {
+    color: var(--heading-text) !important;
+}
+
+/* Açıklama metinleri için okunabilir gri ton */
+.table td .text-muted,
+.text-muted {
+    color: var(--body-text) !important;
+}
+
+/* Tablo satır hover efekti */
+.table-hover tbody tr:hover {
+    background-color: rgba(59, 130, 246, 0.08) !important;
+    color: var(--heading-text) !important;
+}
+
+/* Tüm form input ve textarea elemanlarının placeholder metinlerini görünür yap */
+.form-control::placeholder,
+.form-select::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af !important; /* Net okunan açık gri ton */
+    opacity: 1 !important;
+}

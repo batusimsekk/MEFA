@@ -1,0 +1,156 @@
+@model IEnumerable<MefaOzelEgitim.Domain.Entities.Staff>
+
+@{
+    ViewData["Title"] = "Uzman Kadro Yönetimi";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-light mb-1">Uzman Kadro</h2>
+        <p class="text-muted small mb-0">Merkezimizde görev yapan öğretmen ve uzmanların listesini buradan yönetebilirsiniz.</p>
+    </div>
+    <a href="/Admin/Staff/Create" class="btn btn-primary px-4 rounded-pill fw-semibold shadow-sm" style="background-color: var(--sunset-orange) !important; border-color: var(--sunset-orange) !important;">
+        <i class="fa-solid fa-plus me-2"></i> Yeni Uzman Ekle
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-card" style="border: 1px solid var(--border-color) !important;">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 text-light">
+                <thead class="text-uppercase fs-7 text-secondary" style="background-color: rgba(255, 255, 255, 0.02); border-bottom: 1px solid var(--border-color);">
+                    <tr>
+                        <th class="ps-4 py-3 text-muted">Uzman Bilgisi</th>
+                        <th class="py-3 text-muted">Departman / Birim</th>
+                        <th class="py-3 text-muted">Unvan / Branş</th>
+                        <th class="py-3 text-muted">Uzmanlık Etiketleri</th>
+                        <th class="py-3 text-muted">Sıralama</th>
+                        <th class="text-end pe-4 py-3 text-muted">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var staff in Model)
+                        {
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center py-2">
+                                        <div class="rounded-circle text-secondary d-flex align-items-center justify-content-center me-3 fw-bold overflow-hidden shadow-sm border border-secondary"
+                                             style="width: 45px; height: 45px; min-width: 45px; background-color: rgba(255, 255, 255, 0.05);">
+                                            @if (!string.IsNullOrEmpty(staff.ImageUrl))
+                                            {
+                                                <img src="@staff.ImageUrl" alt="@staff.FullName"
+                                                     class="w-100 h-100 object-fit-cover" />
+                                            }
+                                            else
+                                            {
+                                                <i class="fa-solid fa-user-doctor text-primary"></i>
+                                            }
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-semibold text-light">@staff.FullName</h6>
+                                            <span class="text-muted small text-truncate d-inline-block" style="max-width: 220px;">@staff.Biography</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- Departman Rozeti (Koyu Uyumlu) -->
+                                    <span class="badge border px-3 py-2 fw-semibold" style="background-color: rgba(255, 255, 255, 0.05); color: #e2e8f0; border-color: rgba(255, 255, 255, 0.1) !important;">
+                                        <i class="fa-solid fa-hospital-user text-primary me-1"></i> @staff.Department
+                                    </span>
+                                </td>
+                                <td>
+                                    <!-- Unvan / Branş Rozeti -->
+                                    <span class="badge rounded-pill px-3 py-2 fw-semibold"
+                                          style="background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">
+                                        @staff.Title
+                                    </span>
+                                </td>
+                                <td>
+                                    <!-- Etiketler / Specialties Rozetleri (Koyu Uyumlu) -->
+                                    @if (!string.IsNullOrEmpty(staff.Specialties))
+                                    {
+                                        <div class="d-flex flex-wrap gap-1" style="max-width: 200px;">
+                                            @foreach (var tag in staff.Specialties.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                                            {
+                                                <span class="badge border px-2 py-1 fs-8 rounded-pill" style="background-color: rgba(255, 255, 255, 0.05); color: #cbd5e1; border-color: rgba(255, 255, 255, 0.1) !important;">@tag.Trim()</span>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small fst-italic">Etiket yok</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="fw-medium text-warning">@staff.DisplayOrder</span>
+                                </td>
+                                <td class="text-end pe-4">
+                                    <a href="/Admin/Staff/Edit/@staff.Id"
+                                       class="btn btn-sm text-primary me-1 rounded-3 shadow-sm border border-secondary" style="background-color: rgba(59, 130, 246, 0.1);" title="Düzenle">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <!-- SweetAlert ile tetiklenecek form -->
+                                    <form asp-action="Delete" asp-route-id="@staff.Id" method="post"
+                                          class="d-inline delete-form">
+                                        <button type="button" class="btn btn-sm text-danger rounded-3 delete-btn shadow-sm border border-secondary"
+                                                style="background-color: rgba(239, 68, 68, 0.1);" title="Sil">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <div class="py-4">
+                                    <i class="fa-solid fa-user-slash fa-3x mb-3 text-secondary opacity-50"></i>
+                                    <p class="mb-2 fw-semibold text-light">Henüz kayıtlı uzman eklenmemiş.</p>
+                                    <a href="/Admin/Staff/Create" class="btn btn-sm btn-outline-primary mt-2">İlk Uzmanı Ekle</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Tüm silme butonlarına tıklandığında çalışır
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const form = this.closest('form');
+
+                    Swal.fire({
+                        title: 'Emin misiniz?',
+                        text: "Bu personeli sistemden kalıcı olarak silmek üzeresiniz!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#dc3545', // Kırmızı (Bootstrap Danger)
+                        cancelButtonColor: '#6c757d',  // Gri (Bootstrap Secondary)
+                        confirmButtonText: '<i class="fa-solid fa-trash-can me-1"></i> Evet, Sil!',
+                        cancelButtonText: 'İptal',
+                        customClass: {
+                            popup: 'rounded-4 shadow-sm border-0 bg-dark text-light',
+                            confirmButton: 'px-4 py-2 rounded-3 fw-semibold',
+                            cancelButton: 'px-4 py-2 rounded-3 fw-semibold'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit(); // Onay verilirse formu gönderir
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}

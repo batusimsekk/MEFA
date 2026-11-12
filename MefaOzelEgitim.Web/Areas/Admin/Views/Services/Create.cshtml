@@ -1,0 +1,92 @@
+@model MefaOzelEgitim.Domain.Entities.Service
+
+@{
+    ViewData["Title"] = "Yeni Eğitim / Hizmet Ekle";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card border-0 shadow-sm rounded-4 bg-white p-4 p-md-5">
+            <!-- Başlık ve İkon Alanı -->
+            <div class="d-flex align-items-center mb-4 pb-3 border-bottom">
+                <div class="bg-primary text-white rounded-4 d-flex align-items-center justify-content-center me-3 shadow-sm"
+                     style="width: 55px; height: 55px; min-width: 55px;">
+                    <i class="fa-solid fa-graduation-cap fs-4"></i>
+                </div>
+                <div>
+                    <h3 class="fw-bold text-dark mb-1">Yeni Eğitim / Hizmet Ekle</h3>
+                    <p class="text-muted small mb-0">Sisteme yeni bir eğitim veya hizmet kaydı ekleyin.</p>
+                </div>
+            </div>
+
+            <!-- enctype="multipart/form-data" dosya yükleme için zorunludur -->
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <!-- Sadece hata olduğunda kırmızı kutu görünür, aksi takdirde sayfada boş şerit çıkmaz -->
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="All" class="alert alert-danger rounded-3 small mb-4" role="alert"></div>
+                }
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Title" class="form-label fw-semibold text-secondary">Eğitim / Hizmet Adı</label>
+                        <input asp-for="Title" class="form-control rounded-3 py-2"
+                               placeholder="Örn: Özel Eğitim ve Rehabilitasyon" />
+                        <span asp-validation-for="Title" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Slug" class="form-label fw-semibold text-secondary">Slug (URL Yolu)</label>
+                        <input asp-for="Slug" class="form-control rounded-3 py-2"
+                               placeholder="Örn: ozel-egitim-ve-rehabilitasyon" />
+                        <span asp-validation-for="Slug" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Bilgisayardan dosya seçme alanı (Controller'daki imageFile parametresiyle birebir eşleşir) -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold text-secondary">Eğitim Görseli</label>
+                        <input type="file" name="imageFile" class="form-control rounded-3 py-2" accept="image/*" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="IconClass" class="form-label fw-semibold text-secondary">İkon Sınıfı
+                            (FontAwesome)</label>
+                            <input asp-for="IconClass" class="form-control rounded-3 py-2"
+                                   placeholder="Örn: fa-solid fa-graduation-cap" />
+                            <span asp-validation-for="IconClass" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ShortDescription" class="form-label fw-semibold text-secondary">Kısa
+                            Açıklama</label>
+                            <textarea asp-for="ShortDescription" class="form-control rounded-3" rows="3"
+                                      placeholder="Kartlarda ve listelerde görünecek özet açıklama..."></textarea>
+                            <span asp-validation-for="ShortDescription" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Content" class="form-label fw-semibold text-secondary">Detaylı İçerik</label>
+                            <textarea asp-for="Content" class="form-control rounded-3" rows="6"
+                                      placeholder="Eğitim veya hizmetin detaylı açıklaması..."></textarea>
+                            <span asp-validation-for="Content" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 pt-2">
+                            <a asp-action="Index" class="btn btn-light px-4 rounded-3 fw-semibold text-secondary">İptal</a>
+                            <button type="submit" class="btn btn-primary px-5 rounded-3 fw-semibold shadow-sm">
+                                <i class="fa-solid fa-save me-2"></i> Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }

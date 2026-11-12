@@ -1,0 +1,90 @@
+@model IEnumerable<MefaOzelEgitim.Domain.Entities.Appointment>
+
+@{
+    ViewData["Title"] = "Randevularım";
+}
+
+<div class="container py-5">
+    <!-- Başlık Alanı -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">Randevularım</h2>
+            <p class="text-muted small mb-0">Web sitemiz üzerinden oluşturduğunuz tüm randevu taleplerini ve durumlarını buradan takip edebilirsiniz.</p>
+        </div>
+        <div>
+            <a asp-action="Index" class="btn btn-primary rounded-3 px-4 fw-semibold shadow-sm" style="background-color: var(--sunset-orange) !important; border-color: var(--sunset-orange) !important;">
+                <i class="fa-solid fa-plus me-1"></i> Yeni Randevu Al
+            </a>
+        </div>
+    </div>
+
+    <!-- Randevu Listesi Kartı -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white" style="border: 1px solid var(--border-color) !important;">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light text-muted small text-uppercase" style="border-bottom: 1px solid var(--border-color);">
+                        <tr>
+                            <th class="py-3 px-4">Terapi / Eğitim</th>
+                            <th class="py-3">Yaş Aralığı</th>
+                            <th class="py-3">Talep Edilen Tarih / Saat</th>
+                            <th class="py-3">Veli Notu</th>
+                            <th class="py-3 text-end px-4">Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td class="px-4">
+                                        <span class="badge bg-light text-primary border px-3 py-2 fw-semibold fs-6">
+                                            <i class="fa-solid fa-graduation-cap me-1"></i>@item.ServiceType
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark small fw-medium">@item.AgeRange</span>
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold text-dark small"><i class="fa-regular fa-calendar me-1 text-muted"></i>@item.AppointmentDate.ToString("dd.MM.yyyy")</div>
+                                        <div class="text-muted small"><i class="fa-regular fa-clock me-1 text-muted"></i>@item.AppointmentTime</div>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted small">@(string.IsNullOrEmpty(item.Message) ? "-" : item.Message)</span>
+                                    </td>
+                                    <td class="text-end px-4">
+                                        @if (item.Status == "Beklemede")
+                                        {
+                                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold small text-nowrap">Beklemede</span>
+                                        }
+                                        else if (item.Status == "Onaylandı")
+                                        {
+                                            <span class="badge bg-success text-white px-3 py-2 rounded-pill fw-bold small text-nowrap">Onaylandı</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold small text-nowrap">İptal Edildi</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-5 text-muted">
+                                    <div class="py-4">
+                                        <i class="fa-regular fa-calendar-xmark fa-3x mb-3 text-secondary opacity-50"></i>
+                                        <p class="mb-2 fw-semibold text-dark">Henüz oluşturulmuş bir randevunuz bulunmuyor.</p>
+                                        <a asp-action="Index" class="btn btn-sm btn-outline-primary mt-2">Hemen Randevu Oluştur</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

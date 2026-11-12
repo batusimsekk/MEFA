@@ -1,0 +1,649 @@
+:root {
+  /* Açık Tema Renk Paleti (Hocanın Projesi) */
+  --bg-light: #f8fafc;
+  --card-bg: #ffffff;
+  --topbar-footer-bg: #f1f5f9;
+
+  /* Ana Renkler ve Vurgular */
+  --primary-blue: #0284c7;
+  --primary-blue-hover: #0369a1;
+  --border-color: #e2e8f0;
+
+  /* Sunset Orange (CTA ve Önemli Butonlar) */
+  --sunset-orange: #f97316;
+  --sunset-orange-hover: #ea580c;
+
+  /* Metin Renkleri */
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-light);
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* --- Top Bar --- */
+.top-bar {
+  background-color: var(--topbar-footer-bg);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* --- Header ve Navbar Stilleri (Açık Tema) --- */
+.mefa-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.mefa-info-box {
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+}
+
+.style-meb {
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  letter-spacing: 0.5px;
+}
+
+.style-micro-text {
+  font-size: 0.65rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Navbar Üst Sağ Butonlar ve Hover Efektleri --- */
+
+/* 1. WhatsApp Butonu (Gradyant ve Yumuşak Gölge) */
+.btn-whatsapp {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #ffffff !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 50rem;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.45);
+}
+
+/* 2. Ücretsiz Değerlendirme Butonu (Siteye Uygun Mavi Gradyant) */
+.btn-appointment-blue {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 50rem;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-appointment-blue:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.45);
+}
+
+/* 3. Giriş / Profil Butonu Hover Efekti */
+.btn-login-hover {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  transition: all 0.25s ease;
+}
+
+.btn-login-hover:hover {
+  background-color: #f1f5f9 !important;
+  border-color: var(--primary-blue) !important;
+  color: var(--primary-blue) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Eski Sunset Buton Sınıfı (Gradyant Dokunuşlu) */
+.btn-sunset {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-sunset:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.45);
+}
+
+.btn-primary,
+.hero-section .btn-primary {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover,
+.hero-section .btn-primary:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.45);
+}
+
+/* --- Navbar Linkleri --- */
+.navbar-nav .nav-link {
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--primary-blue) !important;
+  background-color: rgba(2, 132, 199, 0.08) !important;
+}
+
+/* --- MEB Destekli Rozet --- */
+.meb-badge-box {
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.text-success-light {
+  color: #059669;
+}
+
+.meb-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+}
+
+/* --- Hero Section (Maviden Beyaza Yumuşak Gradient) --- */
+.hero-section {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 35%, #ffffff 100%) !important;
+  color: var(--text-main);
+  padding: 110px 0 100px 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+/* --- Modern Kartlar (Açık Tema) --- */
+.hover-card {
+  background-color: var(--card-bg) !important;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid var(--border-color) !important;
+  border-radius: 20px;
+  color: var(--text-main) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.hover-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08) !important;
+  border-color: var(--primary-blue) !important;
+}
+
+.icon-box {
+  width: 75px;
+  height: 75px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1.2rem auto;
+  transition: transform 0.3s ease;
+  background-color: rgba(2, 132, 199, 0.1);
+  color: var(--primary-blue);
+}
+
+.hover-card:hover .icon-box {
+  transform: scale(1.08);
+}
+
+/* --- Form Kontrolleri & Placeholder --- */
+.form-control,
+.form-select {
+  background-color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+.form-control::placeholder,
+.form-select::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #ffffff !important;
+  color: var(--text-main) !important;
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 0 0 0.25rem rgba(2, 132, 199, 0.15) !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+/* --- Swiper Slider Okları --- */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--primary-blue) !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 15px rgba(249, 115, 22, 0.3) !important;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.swiper-button-next:hover:after,
+.swiper-button-prev:hover:after {
+  color: #ffffff !important;
+}
+
+.swiper-pagination,
+.swiper-pagination-bullets {
+  display: none !important;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--topbar-footer-bg);
+  color: var(--text-muted);
+  padding-top: 70px;
+  padding-bottom: 30px;
+  border-top: 1px solid var(--border-color);
+}
+
+footer h5 {
+  color: var(--text-main);
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--primary-blue);
+}
+
+/* --- Tipografi & Kontrast --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-4,
+.display-5 {
+  color: var(--text-main) !important;
+}
+
+p,
+span,
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.mefa-header .navbar-brand span,
+.mefa-header .navbar-brand small {
+  color: var(--text-main) !important;
+}
+
+.mefa-info-box strong {
+  color: var(--text-main) !important;
+}
+
+.mefa-info-box span {
+  color: var(--text-muted) !important;
+}
+
+/* Hero ikinci satır mavi-yeşil gradient geçişi */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #0284c7 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  background-clip:text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Eğitim Kartı Üst Sağ Yumuşak Mavi/Turkuaz Geçiş (Glow) Efekti */
+.education-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.education-card::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, rgba(56, 189, 248, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Kategori Filtre Hap Butonları Stili */
+.category-pill {
+  background-color: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.category-pill:hover,
+.category-pill.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff !important;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+/* Uzman Kartı Tasarımı */
+.staff-card {
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color) !important;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.staff-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Deneyim Rozeti (Kartın üst köşesi - Okunabilirlik ve Şıklık Güncellemesi) */
+.staff-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  color: #ffffff !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+  letter-spacing: 0.3px;
+}
+
+/* Uzmanlık Etiketleri (Hap rozetler) */
+.skill-pill {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Detaylı Bilgi Butonu */
+.btn-staff-detail {
+  background-color: rgba(2, 132, 199, 0.1);
+  color: var(--primary-blue);
+  border: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 50px;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-staff-detail:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+/* Modal Üst Mavi Alan */
+.staff-modal-header-bg {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+/* --- Yukarı Çık Butonu Stilleri --- */
+#backToTopBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 42px;
+  height: 42px;
+  background-color: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+#backToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#backToTopBtn:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(2, 132, 199, 0.3);
+}
+
+/* 1. WhatsApp Butonu (Garanti Gradyant) */
+.btn-whatsapp {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border: none !important;
+  border-radius: 50rem;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35) !important;
+  transition: all 0.25s ease;
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.5) !important;
+}
+
+/* 2. Randevu Al / Mavi Butonlar */
+.btn-appointment-blue,
+.btn-primary,
+.hero-section .btn-primary,
+.modal-content .btn-primary {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35) !important;
+  transition: all 0.2s ease;
+}
+
+.btn-appointment-blue:hover,
+.btn-primary:hover,
+.hero-section .btn-primary:hover,
+.modal-content .btn-primary:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.5) !important;
+}
+
+/* 3. Detaylı Bilgi Butonu (Uzman Kartlarındaki) */
+.btn-staff-detail {
+  background: rgba(2, 132, 199, 0.1) !important;
+  color: var(--primary-blue) !important;
+  border: none !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 50px;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-staff-detail:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+/* 4. Kategori Hapları (Filtre Butonları) */
+.category-pill:hover,
+.category-pill.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35) !important;
+}
+
+/* Swiper Oklarını Kartlardan Uzaklaştırıp Sabitleme */
+#services .swiper-button-prev,
+#services .swiper-button-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  /* Yukarı kayma efektini sabitler, zıplamayı önler */
+  margin-top: 0 !important;
+  z-index: 10;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+/* Sol oku tam dışarı konumlandır */
+#services .swiper-button-prev {
+  left: -15px !important;
+}
+
+/* Sağ oku tam dışarı konumlandır */
+#services .swiper-button-next {
+  right: -15px !important;
+}
+
+/* Hover olduğunda yukarı zıplamasını engelle, sadece renk/gölge değişimi yap */
+#services .swiper-button-prev:hover,
+#services .swiper-button-next:hover {
+  transform: translateY(-50%) scale(1.05) !important;
+  /* Yukarı kaymayı önleyip sadece hafif büyüme efekti verir */
+  background-color: var(--primary-blue) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+/* Okların içindeki ikon boyutları */
+#services .swiper-button-prev::after,
+#services .swiper-button-next::after {
+  font-size: 1.1rem !important;
+  font-weight: bold;
+}
+
+/* Uzman Eğitmenler Slider Oklarını Kartlardan Uzaklaştırma ve Sabitleme */
+#staff .swiper-button-prev,
+#staff .swiper-button-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  /* Yukarı kayma efektini sabitler, zıplamayı önler */
+  margin-top: 0 !important;
+  z-index: 10;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+/* Sol oku tam dışarı konumlandır */
+#staff .swiper-button-prev {
+  left: -15px !important;
+}
+
+/* Sağ oku tam dışarı konumlandır */
+#staff .swiper-button-next {
+  right: -15px !important;
+}
+
+/* Hover olduğunda yukarı zıplamasını engelle, sadece hafif büyüme efekti ver */
+#staff .swiper-button-prev:hover,
+#staff .swiper-button-next:hover {
+  transform: translateY(-50%) scale(1.05) !important;
+  background-color: var(--primary-blue) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+/* Okların içindeki ikon boyutları */
+#staff .swiper-button-prev::after,
+#staff .swiper-button-next::after {
+  font-size: 1.1rem !important;
+  font-weight: bold;
+}

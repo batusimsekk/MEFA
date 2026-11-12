@@ -1,0 +1,69 @@
+@model MefaOzelEgitim.Web.Areas.Admin.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="mb-4">
+    <h2 class="fw-bold text-dark">Genel Bakış</h2>
+    <p class="text-muted">MEFA Özel Eğitim Merkezi yönetim paneline hoş geldiniz.</p>
+</div>
+
+<!-- İstatistik Kartları -->
+<div class="row g-4 mb-4">
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+            <div class="d-flex align-items-center">
+                <div class="bg-primary-subtle text-primary rounded-3 p-3 fs-3 me-3">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div>
+                    <span class="text-muted small d-block">Aktif Randevular</span>
+                    <h3 class="fw-bold mb-0 text-dark">@Model.AppointmentCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+            <div class="d-flex align-items-center">
+                <div class="bg-success-subtle text-success rounded-3 p-3 fs-3 me-3">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <span class="text-muted small d-block">Eğitim Alanları</span>
+                    <h3 class="fw-bold mb-0 text-dark">@Model.ServiceCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+            <div class="d-flex align-items-center">
+                <div class="bg-warning-subtle text-warning rounded-3 p-3 fs-3 me-3">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <div>
+                    <span class="text-muted small d-block">Uzman Kadro</span>
+                    <h3 class="fw-bold mb-0 text-dark">@Model.StaffCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+            <div class="d-flex align-items-center">
+                <div class="bg-info-subtle text-info rounded-3 p-3 fs-3 me-3">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                    <span class="text-muted small d-block">Kayıtlı Üyeler</span>
+                    <h3 class="fw-bold mb-0 text-dark">@Model.UserCount</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

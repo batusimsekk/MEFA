@@ -1,0 +1,137 @@
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@inject Microsoft.AspNetCore.Identity.UserManager<Microsoft.AspNetCore.Identity.IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Kullanıcı Yönetimi";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-light mb-1">Kayıtlı Kullanıcılar</h2>
+        <p class="text-muted small mb-0">Sisteme üye olan kullanıcıların listesini buradan görüntüleyebilirsiniz.</p>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light text-uppercase fs-7 text-secondary">
+                    <tr>
+                        <th class="ps-4">Ad Soyad</th>
+                        <th>Roller</th>
+                        <th class="text-end pe-4">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        var roles = await UserManager.GetRolesAsync(user);
+                        var claims = await UserManager.GetClaimsAsync(user);
+                        
+                        // Kayıt olurken verdiğin "FirstName" ve "LastName" claim'lerini çekip birleştiriyoruz
+                        var firstName = claims.FirstOrDefault(c => c.Type == "FirstName")?.Value;
+                        var lastName = claims.FirstOrDefault(c => c.Type == "LastName")?.Value;
+                        
+                        var fullName = (!string.IsNullOrEmpty(firstName) || !string.IsNullOrEmpty(lastName)) 
+                            ? $"{firstName} {lastName}".Trim() 
+                            : user.UserName; // Eğer claim yoksa yedek olarak UserName gösterilir
+
+                        var isAdmin = roles.Contains("Admin");
+
+                        <tr>
+                            <td class="ps-4 fw-semibold text-light">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-solid fa-user-circle text-primary me-2 fs-4"></i>
+                                    <div>
+                                        <div class="text-light">@fullName</div>
+                                        <small class="text-muted">@user.Email</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                @foreach (var role in roles)
+                                {
+                                    if (role == "Admin")
+                                    {
+                                        <span class="badge px-3 py-2 rounded-pill fw-semibold"
+                                              style="background-color: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);">@role</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge px-3 py-2 rounded-pill fw-semibold"
+                                              style="background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">@role</span>
+                                    }
+                                }
+                            </td>
+                            <td class="text-end pe-4">
+                                <!-- Düzenle Butonu (Göz İkonu) -->
+                                <a asp-action="Edit" asp-route-id="@user.Id"
+                                   class="btn btn-sm btn-light text-primary me-1 rounded-3" title="Düzenle">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <!-- SweetAlert ile tetiklenecek silme formu -->
+                                <form asp-action="Delete" asp-route-id="@user.Id" method="post"
+                                      class="d-inline delete-form">
+                                    <button type="button" class="btn btn-sm btn-light text-danger rounded-3 delete-btn"
+                                            title="Sil" data-is-admin="@isAdmin.ToString().ToLower()">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const form = this.closest('form');
+                    const isAdmin = this.getAttribute('data-is-admin') === 'true';
+
+                    if (isAdmin) {
+                        Swal.fire({
+                            title: 'Silme İşlemi Engellendi!',
+                            text: 'Admin yetkisine sahip hesaplar sistemden silinemez.',
+                            icon: 'error',
+                            confirmButtonColor: '#0d6efd',
+                            confirmButtonText: 'Tamam',
+                            customClass: {
+                                popup: 'rounded-4 shadow-sm border-0',
+                                confirmButton: 'px-4 py-2 rounded-3 fw-semibold'
+                            }
+                        });
+                        return;
+                    }
+
+                    Swal.fire({
+                        title: 'Emin misiniz?',
+                        text: "Bu kullanıcı sistemden kalıcı olarak silinecektir!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#dc3545',
+                        cancelButtonColor: '#6c757d',
+                        confirmButtonText: '<i class="fa-solid fa-trash-can me-1"></i> Evet, Sil!',
+                        cancelButtonText: 'İptal',
+                        customClass: {
+                            popup: 'rounded-4 shadow-sm border-0',
+                            confirmButton: 'px-4 py-2 rounded-3 fw-semibold',
+                            cancelButton: 'px-4 py-2 rounded-3 fw-semibold'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}
